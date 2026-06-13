@@ -1,0 +1,71 @@
+{
+  "nav": {
+    "mission": "Mission",
+    "donate": "Donate",
+    "events": "Events",
+    "past_events": "History",
+    "gallery": "Gallery",
+    "contact": "Contact"
+  },
+  "hero": {
+    "eyebrow": "Founded in memory of a maestro",
+    "title": "Music lives in those who share it",
+    "subtitle": "Fundación Pipo Navarro preserves Panama's musical legacy by donating instruments and promoting music education across Panama.",
+    "cta_primary": "Donate an instrument",
+    "cta_secondary": "Our story"
+  },
+  "mission": {
+    "title": "Our Mission",
+    "subtitle": "Bringing music to those who need it most.",
+    "card1_title": "We receive instruments",
+    "card1_text": "We accept musical instrument donations from individuals and institutions to give them a second life.",
+    "card2_title": "We promote music",
+    "card2_text": "We participate in cultural events that celebrate and spread Panamanian music.",
+    "card3_title": "We honor a legacy",
+    "card3_text": "We preserve the memory of Pipo Navarro, a Panamanian musician whose passion inspires our work."
+  },
+  "donate": {
+    "title": "Donate an Instrument",
+    "subtitle": "An instrument you no longer use can change a child's life.",
+    "step1_title": "Contact us",
+    "step1_text": "Write or call us to coordinate the donation.",
+    "step2_title": "We pick it up",
+    "step2_text": "We arrange collection at a convenient location.",
+    "step3_title": "We deliver it",
+    "step3_text": "The instrument reaches the hands of someone who needs it.",
+    "cta": "I want to donate",
+    "shipping_title": "We cover the shipping",
+    "shipping_body": "We arrange pickup through a courier (FedEx or similar, depending on your location), nationally and internationally, at no cost to you. If the number of instruments to donate is large, we collect them in person."
+  },
+  "events": {
+    "title": "Upcoming Events",
+    "subtitle": "Join us at events celebrating Panamanian music.",
+    "no_events": "No upcoming events. Follow us on social media to stay updated!"
+  },
+  "gallery": {
+    "title": "Gallery",
+    "subtitle": "Moments that inspire us to keep going."
+  },
+  "contact": {
+    "title": "Contact Us",
+    "subtitle": "We are in Panama and always ready to hear from you.",
+    "email_label": "Email",
+    "phone_label": "Phone",
+    "address_label": "Location",
+    "address_value": "Panama City, Panama",
+    "follow": "Follow us"
+  },
+  "past_events": {
+    "title": "Past Events",
+    "subtitle": "Moments that have shaped our story.",
+    "no_events": "No past events recorded yet."
+  },
+  "historia": {
+    "title": "Who was Pipo Navarro?",
+    "subtitle": "Panamanian trumpeter, teacher, and composer (1921–1981)"
+  },
+  "footer": {
+    "tagline": "Preserving Panama's musical legacy.",
+    "rights": "All rights reserved."
+  }
+}

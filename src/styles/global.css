@@ -1,1 +1,110 @@
 @import "tailwindcss";
+
+/* ============================================================
+   CLASS-BASED DARK MODE (Tailwind v4)
+   Makes dark: variants respond to the .dark class on <html>,
+   NOT to prefers-color-scheme. This is required in v4 because
+   darkMode:'class' in tailwind.config.mjs is ignored.
+   ============================================================ */
+@custom-variant dark (&:is(.dark *));
+
+/* Custom brand palette + typography — Tailwind v4 @theme block */
+@theme {
+  /* Brand */
+  --color-brand-orange: #C85A1A;
+  --color-brand-green:  #1A7A4A;
+  --color-brand-gold:   #E8B84B;
+  --color-brand-red:    #D94F3D;
+
+  /* Light theme surfaces */
+  --color-warm-white:   #F5EDD8;
+  --color-warm-card:    #FDF6E8;
+  --color-warm-section: #EDE0C4;
+  --color-warm-border:  #D9C9A8;
+  --color-warm-text:    #2C1F0E;
+  --color-warm-muted:   #8A7055;
+
+  /* Dark theme canvas */
+  --color-warm-dark:    #12100E;
+
+  /* Fonts */
+  --font-display: "Playfair Display", serif;
+  --font-sans:    "DM Sans", sans-serif;
+}
+
+/* ============================================================
+   LIGHT THEME
+   Per-section background overrides give each section its own
+   warm/tropical accent. Neutral scale is remapped to warm tones
+   so legacy neutral-* classes look right in light mode.
+   ============================================================ */
+:root,
+[data-theme="light"] {
+  color-scheme: light;
+
+  /* Dark end — near-black charcoal */
+  --color-neutral-950: #100E0B;
+  --color-neutral-900: #1E1B17;
+  --color-neutral-800: #312D27;
+  --color-neutral-700: #4A4540;
+  --color-neutral-600: #635E58;
+
+  /* Mid range — warm gray */
+  --color-neutral-500: #7A7060;
+  --color-neutral-400: #9C8E7C;
+
+  /* Light end — vibrant warm gold */
+  --color-neutral-300: #C8A870;
+  --color-neutral-200: #DFC090;
+  --color-neutral-100: #EDD4A8;
+  --color-neutral-50:  #F8E8C0;
+
+  /* Warm golden canvas */
+  --color-warm-white:  #F5EDD8;
+}
+
+/* --- Tropical per-section backgrounds (light mode only) --- */
+[data-theme="light"] #donar {
+  background-color: #FFF3DC;
+}
+[data-theme="light"] #eventos-pasados {
+  background-color: #E6F8F4;
+}
+[data-theme="light"] #galeria {
+  background-color: #FDEEE8;
+}
+[data-theme="light"] #contacto {
+  background-color: #EBF4FF;
+}
+
+/* ============================================================
+   DARK THEME
+   No neutral-scale overrides — Tailwind's default grays are
+   used as-is so dark:text-neutral-400 stays proper gray.
+   ============================================================ */
+[data-theme="dark"] {
+  color-scheme: dark;
+  --color-warm-dark: #0E0C0A;
+}
+
+/* ============================================================
+   BASE BODY
+   ============================================================ */
+body {
+  background-color: var(--color-warm-white);
+  color:            var(--color-warm-text);
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+html.dark body {
+  background-color: var(--color-warm-dark);
+  color:            var(--color-neutral-100);
+}
+
+/* Smooth transitions on themed elements */
+header, main, footer, section,
+[class*="bg-"], [class*="border-"], [class*="text-neutral"] {
+  transition-property: background-color, border-color, color;
+  transition-duration: 0.25s;
+  transition-timing-function: ease;
+}

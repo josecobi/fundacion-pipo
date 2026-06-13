@@ -1,0 +1,165 @@
+---
+import { getLangFromUrl, useTranslations } from '../i18n/utils';
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+---
+
+<section class="relative min-h-screen flex items-center overflow-hidden pt-16">
+
+  <!-- =============================================
+       BACKGROUND: tropical SVG decorations
+       Kept in one place so they are easy to edit.
+  ============================================= -->
+  <div class="absolute inset-0 pointer-events-none select-none" aria-hidden="true">
+
+    <!-- Large faded music staff lines top-right -->
+    <svg class="absolute top-0 right-0 w-120 opacity-[0.04] dark:opacity-[0.06]" viewBox="0 0 480 320" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M0 60 C120 55, 360 65, 480 60 M0 100 C120 95, 360 105, 480 100 M0 140 C120 135, 360 145, 480 140 M0 180 C120 175, 360 185, 480 180 M0 220 C120 215, 360 225, 480 220" stroke="#C85A1A" stroke-width="2" fill="none"/>
+    </svg>
+
+    <!-- Tropical leaf top-left -->
+    <svg class="absolute -top-10 -left-10 w-[320px] opacity-[0.06] dark:opacity-[0.08]" viewBox="0 0 320 320" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M40 280 C60 200, 160 80, 280 40 C260 120, 160 240, 40 280Z" fill="#1A7A4A"/>
+      <path d="M40 280 C100 220, 200 160, 280 40" stroke="#1A7A4A" stroke-width="2"/>
+    </svg>
+
+    <!-- Trumpet watermark — large, bottom-left, rotated -->
+    <img
+      src="/images/trumpet-svgrepo-com.svg"
+      class="absolute -bottom-8 -left-16 w-130 opacity-[0.05] dark:opacity-[0.07] rotate-[-20deg]"
+      style="filter: invert(40%) sepia(60%) saturate(600%) hue-rotate(340deg) brightness(80%);"
+    />
+
+    <!-- Quarter note bottom-left -->
+    <svg class="absolute bottom-16 left-8 w-20 opacity-[0.07] dark:opacity-[0.09]" viewBox="0 0 80 160" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <line x1="56" y1="20" x2="56" y2="130" stroke="#C85A1A" stroke-width="4" stroke-linecap="round"/>
+      <ellipse cx="44" cy="132" rx="16" ry="10" fill="#C85A1A" transform="rotate(-15 44 132)"/>
+    </svg>
+
+    <!-- Eighth note bottom-right -->
+    <svg class="absolute bottom-24 right-12 w-15 opacity-[0.07] dark:opacity-[0.09]" viewBox="0 0 60 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <line x1="42" y1="10" x2="42" y2="96" stroke="#E8B84B" stroke-width="3.5" stroke-linecap="round"/>
+      <path d="M42 10 C60 20, 58 50, 42 44" fill="#E8B84B"/>
+      <ellipse cx="30" cy="98" rx="14" ry="9" fill="#E8B84B" transform="rotate(-15 30 98)"/>
+    </svg>
+
+    <!-- Small tropical flower dot cluster -->
+    <svg class="absolute top-1/3 right-4 w-12 opacity-[0.10]" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <circle cx="24" cy="24" r="6" fill="#E8B84B"/>
+      <ellipse cx="24" cy="10" rx="5" ry="9" fill="#D94F3D" opacity="0.7"/>
+      <ellipse cx="24" cy="38" rx="5" ry="9" fill="#D94F3D" opacity="0.7"/>
+      <ellipse cx="10" cy="24" rx="9" ry="5" fill="#D94F3D" opacity="0.7"/>
+      <ellipse cx="38" cy="24" rx="9" ry="5" fill="#D94F3D" opacity="0.7"/>
+    </svg>
+
+  </div>
+
+  <!-- =============================================
+       MAIN HERO GRID: text left, photo right
+  ============================================= -->
+  <div class="max-w-6xl mx-auto px-6 w-full">
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-16 items-center py-20">
+
+      <!-- LEFT: Text content -->
+      <div class="flex flex-col gap-6">
+
+        <!-- Eyebrow label -->
+        <div class="flex items-center gap-3">
+          <span class="block w-6 h-0.5 bg-brand-orange"></span>
+          <span class="text-xs font-semibold tracking-[0.15em] uppercase text-brand-orange">
+            {t('hero.eyebrow')}
+          </span>
+        </div>
+
+        <!-- Main title -->
+        <h1 class="font-display font-black text-5xl md:text-6xl leading-[1.08] text-warm-text dark:text-neutral-100">
+          {t('hero.title').split(' ').map((word, i) => (
+            i === 2
+              ? <em class="not-italic text-brand-orange">{word} </em>
+              : <span>{word} </span>
+          ))}
+        </h1>
+
+        <!-- Subtitle -->
+        <p class="text-lg text-warm-muted dark:text-neutral-400 leading-relaxed max-w-md">
+          {t('hero.subtitle')}
+        </p>
+
+        <!-- CTA buttons -->
+        <div class="flex flex-wrap items-center gap-4 pt-2">
+          <a
+            href="#donar"
+            class="inline-flex items-center gap-2 px-6 py-3.5 rounded-xl bg-brand-orange text-white text-sm font-semibold hover:-translate-y-0.5 hover:shadow-lg transition-all duration-150"
+          >
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
+            </svg>
+            {t('hero.cta_primary')}
+          </a>
+          <a
+            href="#historia"
+            class="inline-flex items-center gap-2 px-6 py-3.5 rounded-xl border border-warm-border dark:border-neutral-700 text-sm font-semibold text-warm-text dark:text-neutral-300 hover:border-brand-orange hover:text-brand-orange dark:hover:text-brand-orange transition-all duration-150"
+          >
+            {t('hero.cta_secondary')}
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/>
+            </svg>
+          </a>
+        </div>
+
+        <!-- Stats strip -->
+        <div class="flex gap-8 pt-4 border-t border-warm-border dark:border-neutral-800 mt-2">
+          <div class="flex flex-col">
+            <span class="font-display font-bold text-3xl text-brand-orange">+200</span>
+            <span class="text-xs text-warm-muted dark:text-neutral-400 mt-0.5">
+              {lang === 'es' ? 'Instrumentos donados' : 'Instruments donated'}
+            </span>
+          </div>
+          <div class="flex flex-col">
+            <span class="font-display font-bold text-3xl text-brand-green">+50</span>
+            <span class="text-xs text-warm-muted dark:text-neutral-400 mt-0.5">
+              {lang === 'es' ? 'Eventos musicales' : 'Music events'}
+            </span>
+          </div>
+          <div class="flex flex-col">
+            <span class="font-display font-bold text-3xl text-brand-gold">2010</span>
+            <span class="text-xs text-warm-muted dark:text-neutral-400 mt-0.5">
+              {lang === 'es' ? 'Año de fundación' : 'Year founded'}
+            </span>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- RIGHT: Pipo's photo -->
+      <div class="relative flex justify-center">
+
+        <!-- Decorative border offset frame -->
+        <div class="relative w-full max-w-sm">
+
+          <!-- Gold offset square behind photo -->
+          <div class="absolute -top-4 -right-4 w-full h-full rounded-2xl border-2 border-brand-gold opacity-40 dark:opacity-30"></div>
+
+          <!-- Green filled square behind photo (bottom-left) -->
+          <div class="absolute -bottom-4 -left-4 w-2/3 h-2/3 rounded-xl bg-brand-green opacity-10 dark:opacity-15"></div>
+
+          <!-- Photo -->
+          <div class="relative z-10 w-full aspect-4/5 rounded-2xl overflow-hidden shadow-2xl bg-neutral-900">
+            <img
+              src="/images/pipo.jpg"
+              alt="Pipo Navarro — trompetista panameño"
+              class="w-full h-full object-cover object-top grayscale"
+            />
+          </div>
+
+          <!-- Small hibiscus accent dot -->
+          <div class="absolute -top-2 -left-2 w-5 h-5 rounded-full bg-brand-red z-20 shadow-md"></div>
+
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+</section>

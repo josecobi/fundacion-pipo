@@ -1,0 +1,71 @@
+{
+  "nav": {
+    "mission": "Misión",
+    "donate": "Donar",
+    "events": "Eventos",
+    "past_events": "Historia",
+    "gallery": "Galería",
+    "contact": "Contacto"
+  },
+  "hero": {
+    "eyebrow": "Fundada en memoria de un maestro",
+    "title": "La música vive en quienes la comparten",
+    "subtitle": "Fundación Pipo Navarro preserva el legado musical panameño donando instrumentos y promoviendo la educación musical en Panamá.",
+    "cta_primary": "Donar un instrumento",
+    "cta_secondary": "Conocer nuestra historia"
+  },
+  "mission": {
+    "title": "Nuestra Misión",
+    "subtitle": "Llevar la música a quienes más la necesitan.",
+    "card1_title": "Recibimos instrumentos",
+    "card1_text": "Aceptamos donaciones de instrumentos musicales de personas e instituciones para darles una segunda vida.",
+    "card2_title": "Promovemos la música",
+    "card2_text": "Participamos en eventos culturales que celebran y difunden la música panameña.",
+    "card3_title": "Honramos un legado",
+    "card3_text": "Preservamos la memoria de Pipo Navarro, músico panameño cuya pasión inspira nuestra labor."
+  },
+  "donate": {
+    "title": "Dona un Instrumento",
+    "subtitle": "Un instrumento que ya no usas puede cambiar la vida de un niño.",
+    "step1_title": "Contáctanos",
+    "step1_text": "Escríbenos o llámanos para coordinar la donación.",
+    "step2_title": "Lo recogemos",
+    "step2_text": "Coordinamos la recolección del instrumento en un punto conveniente.",
+    "step3_title": "Lo entregamos",
+    "step3_text": "El instrumento llega a manos de quien lo necesita.",
+    "cta": "Quiero donar",
+    "shipping_title": "La fundación cubre el envío",
+    "shipping_body": "Coordinamos la recolección por encomienda (FedEx u otra, según tu ubicación), a nivel nacional e internacional, sin costo para ti. Si el número de instrumentos a donar es elevado, los recogemos personalmente."
+  },
+  "events": {
+    "title": "Próximos Eventos",
+    "subtitle": "Únete a nosotros en eventos que celebran la música panameña.",
+    "no_events": "No hay eventos próximos. ¡Síguenos en redes para no perderte nada!"
+  },
+  "gallery": {
+    "title": "Galería",
+    "subtitle": "Momentos que nos inspiran a seguir."
+  },
+  "contact": {
+    "title": "Contáctanos",
+    "subtitle": "Estamos en Panamá y siempre listos para escucharte.",
+    "email_label": "Correo electrónico",
+    "phone_label": "Teléfono",
+    "address_label": "Ubicación",
+    "address_value": "Ciudad de Panamá, Panamá",
+    "follow": "Síguenos"
+  },
+  "past_events": {
+    "title": "Eventos Pasados",
+    "subtitle": "Momentos que han marcado nuestra historia.",
+    "no_events": "No hay eventos pasados registrados aún."
+  },
+  "historia": {
+    "title": "¿Quién fue Pipo Navarro?",
+    "subtitle": "Trompetista, maestro y compositor panameño (1921–1981)"
+  },
+  "footer": {
+    "tagline": "Preservando el legado musical de Panamá.",
+    "rights": "Todos los derechos reservados."
+  }
+}

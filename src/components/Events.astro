@@ -1,0 +1,252 @@
+---
+import { getCollection } from 'astro:content';
+import { getLangFromUrl, useTranslations } from '../i18n/utils';
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+
+const allEvents = await getCollection('events');
+const events = allEvents.sort(
+  (a, b) => new Date(a.data.date).getTime() - new Date(b.data.date).getTime()
+);
+
+const allPastEvents = await getCollection('past-events');
+const pastEvents = allPastEvents.sort(
+  (a, b) => new Date(b.data.date).getTime() - new Date(a.data.date).getTime()
+);
+
+function dayOf(dateStr: string) {
+  return new Date(dateStr + 'T12:00:00').getDate();
+}
+function monthOf(dateStr: string, lang: string) {
+  return new Date(dateStr + 'T12:00:00').toLocaleDateString(
+    lang === 'es' ? 'es-PA' : 'en-US', { month: 'short' }
+  );
+}
+function fullDate(dateStr: string, lang: string) {
+  return new Date(dateStr + 'T12:00:00').toLocaleDateString(
+    lang === 'es' ? 'es-PA' : 'en-US',
+    { year: 'numeric', month: 'long', day: 'numeric' }
+  );
+}
+---
+
+<section id="eventos" class="relative py-28 overflow-hidden">
+
+  <!-- BACKGROUND DECORATIONS -->
+  <div class="absolute inset-0 pointer-events-none select-none" aria-hidden="true">
+    <svg class="absolute top-12 right-8 w-[100px] opacity-[0.06] dark:opacity-[0.08]" viewBox="0 0 100 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <line x1="30" y1="10" x2="30" y2="90" stroke="#E8B84B" stroke-width="4" stroke-linecap="round"/>
+      <line x1="70" y1="10" x2="70" y2="80" stroke="#E8B84B" stroke-width="4" stroke-linecap="round"/>
+      <line x1="30" y1="10" x2="70" y2="10" stroke="#E8B84B" stroke-width="4" stroke-linecap="round"/>
+      <ellipse cx="18" cy="92" rx="14" ry="9" fill="#E8B84B" transform="rotate(-15 18 92)"/>
+      <ellipse cx="58" cy="82" rx="14" ry="9" fill="#E8B84B" transform="rotate(-15 58 82)"/>
+    </svg>
+    <svg class="absolute -bottom-8 -left-8 w-[200px] opacity-[0.05] dark:opacity-[0.07]" viewBox="0 0 200 240" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M160 10 C100 50, 40 130, 10 230 C60 170, 130 90, 160 10Z" fill="#1A7A4A"/>
+      <path d="M160 10 C100 60, 50 150, 10 230" stroke="#1A7A4A" stroke-width="2"/>
+    </svg>
+  </div>
+
+  <div class="max-w-6xl mx-auto px-6 relative z-10">
+
+    <!-- ── Section header ── -->
+    <div class="text-center mb-16">
+      <div class="flex items-center justify-center gap-3 mb-4">
+        <span class="block w-6 h-0.5 bg-brand-orange"></span>
+        <span class="text-xs font-semibold tracking-[0.15em] uppercase text-brand-orange">
+          {lang === 'es' ? 'Únete a nosotros' : 'Join us'}
+        </span>
+        <span class="block w-6 h-0.5 bg-brand-orange"></span>
+      </div>
+      <h2 class="font-display font-bold text-4xl md:text-5xl text-warm-text dark:text-neutral-100 mb-5">
+        {t('events.title')}
+      </h2>
+      <p class="text-lg text-warm-muted dark:text-neutral-400 max-w-lg mx-auto leading-relaxed">
+        {t('events.subtitle')}
+      </p>
+    </div>
+
+    <!-- ── Upcoming events grid ── -->
+    {events.length === 0 ? (
+      <div class="text-center py-16 text-warm-muted dark:text-neutral-600">
+        <svg class="mx-auto mb-4 w-12 opacity-40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="3" y="4" width="18" height="18" rx="2"/>
+          <line x1="16" y1="2" x2="16" y2="6"/>
+          <line x1="8"  y1="2" x2="8"  y2="6"/>
+          <line x1="3"  y1="10" x2="21" y2="10"/>
+        </svg>
+        <p class="text-sm">{t('events.no_events')}</p>
+      </div>
+    ) : (
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-20">
+        {events.map((event) => {
+          const title       = lang === 'es' ? event.data.title_es       : event.data.title_en;
+          const location    = lang === 'es' ? event.data.location_es    : event.data.location_en;
+          const description = lang === 'es' ? event.data.description_es : event.data.description_en;
+          const isFeatured  = event.data.featured;
+          return (
+            <div class={`
+              bg-warm-card dark:bg-neutral-900 rounded-2xl overflow-hidden
+              border transition-all duration-300 hover:shadow-xl group flex flex-col
+              ${isFeatured
+                ? 'border-brand-orange/40 dark:border-brand-orange/30 hover:border-brand-orange'
+                : 'border-warm-border dark:border-neutral-800 hover:border-brand-orange dark:hover:border-brand-orange'}
+            `}>
+
+              <!-- Image / placeholder -->
+              <div class="relative w-full h-52 overflow-hidden bg-warm-section dark:bg-neutral-800 flex-shrink-0">
+                {event.data.image ? (
+                  <img
+                    src={`/images/events/${event.data.image}`}
+                    alt={title}
+                    class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                    loading="lazy"
+                  />
+                ) : (
+                  <div class="w-full h-full flex flex-col items-center justify-center gap-3">
+                    <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="#C85A1A" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" opacity="0.35">
+                      <path d="M9 18V5l12-2v13"/>
+                      <circle cx="6" cy="18" r="3"/>
+                      <circle cx="18" cy="16" r="3"/>
+                    </svg>
+                    <span class="text-xs font-medium text-warm-muted dark:text-neutral-600 uppercase tracking-widest">
+                      {lang === 'es' ? 'Sin imagen' : 'No image'}
+                    </span>
+                  </div>
+                )}
+
+                <!-- Date badge overlaid on image -->
+                <div class={`
+                  absolute top-3 left-3 w-14 h-14 rounded-xl flex flex-col items-center justify-center shadow-md
+                  ${isFeatured ? 'bg-brand-orange text-white' : 'bg-warm-white dark:bg-neutral-900 text-warm-text dark:text-neutral-200'}
+                `}>
+                  <span class="text-xl font-display font-black leading-none">{dayOf(event.data.date)}</span>
+                  <span class="text-[9px] font-bold uppercase tracking-wider mt-0.5 opacity-80">{monthOf(event.data.date, lang)}</span>
+                </div>
+
+                <!-- Featured badge -->
+                {isFeatured && (
+                  <div class="absolute top-3 right-3 flex items-center gap-1 px-2 py-1 rounded-full bg-brand-orange/90 backdrop-blur-sm">
+                    <div class="w-1.5 h-1.5 rounded-full bg-white"></div>
+                    <span class="text-[9px] font-bold tracking-widest uppercase text-white">
+                      {lang === 'es' ? 'Destacado' : 'Featured'}
+                    </span>
+                  </div>
+                )}
+              </div>
+
+              <!-- Card body -->
+              <div class="p-5 flex flex-col gap-2 flex-1">
+                <div class="flex items-center justify-between">
+                  <div class="flex items-center gap-1.5 text-xs text-warm-muted dark:text-neutral-500">
+                    <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                      <circle cx="12" cy="12" r="10"/>
+                      <polyline points="12 6 12 12 16 14"/>
+                    </svg>
+                    {event.data.time}
+                  </div>
+                </div>
+
+                <h3 class="font-display font-bold text-lg leading-snug text-warm-text dark:text-neutral-100 group-hover:text-brand-orange transition-colors duration-200">
+                  {title}
+                </h3>
+
+                <div class="flex items-center gap-1.5 text-xs text-warm-muted dark:text-neutral-400">
+                  <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
+                    <circle cx="12" cy="10" r="3"/>
+                  </svg>
+                  {location}
+                </div>
+
+                <p class="text-sm text-warm-muted dark:text-neutral-400 leading-relaxed line-clamp-2 mt-1 flex-1">
+                  {description}
+                </p>
+              </div>
+
+            </div>
+          );
+        })}
+      </div>
+    )}
+
+    <!-- ── Past events divider ── -->
+    {pastEvents.length > 0 && (
+      <div>
+        <div class="flex items-center gap-5 mb-12">
+          <div class="flex-1 h-px bg-warm-border dark:bg-neutral-800"></div>
+          <div class="flex items-center gap-3 shrink-0">
+            <span class="block w-5 h-0.5 bg-brand-orange opacity-60"></span>
+            <span class="text-xs font-semibold tracking-[0.15em] uppercase text-brand-orange">
+              {lang === 'es' ? 'Eventos Pasados' : 'Past Events'}
+            </span>
+            <span class="block w-5 h-0.5 bg-brand-orange opacity-60"></span>
+          </div>
+          <div class="flex-1 h-px bg-warm-border dark:bg-neutral-800"></div>
+        </div>
+
+        <!-- Past events grid -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          {pastEvents.map((event) => {
+            const title    = lang === 'es' ? event.data.title_es    : event.data.title_en;
+            const location = lang === 'es' ? event.data.location_es : event.data.location_en;
+            const imageAlt = lang === 'es'
+              ? (event.data.image_alt_es ?? title)
+              : (event.data.image_alt_en ?? title);
+            return (
+              <div class="bg-warm-card dark:bg-neutral-900 border border-warm-border dark:border-neutral-800 rounded-2xl overflow-hidden hover:shadow-lg hover:border-brand-orange/50 dark:hover:border-brand-orange/40 transition-all duration-300 group flex flex-col">
+
+                <!-- Image / placeholder -->
+                <div class="relative w-full h-48 overflow-hidden bg-warm-section dark:bg-neutral-800 flex-shrink-0">
+                  {event.data.image ? (
+                    <img
+                      src={`/images/past-events/${event.data.image}`}
+                      alt={imageAlt}
+                      class="w-full h-full object-cover grayscale group-hover:grayscale-0 group-hover:scale-105 transition-all duration-500"
+                      loading="lazy"
+                    />
+                  ) : (
+                    <div class="w-full h-full flex flex-col items-center justify-center gap-3">
+                      <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#C85A1A" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" opacity="0.3">
+                        <path d="M9 18V5l12-2v13"/>
+                        <circle cx="6" cy="18" r="3"/>
+                        <circle cx="18" cy="16" r="3"/>
+                      </svg>
+                      <span class="text-xs font-medium text-warm-muted dark:text-neutral-600 uppercase tracking-widest">
+                        {lang === 'es' ? 'Sin imagen' : 'No image'}
+                      </span>
+                    </div>
+                  )}
+
+                  <!-- Date badge -->
+                  <div class="absolute top-3 left-3 bg-warm-white/90 dark:bg-neutral-900/90 backdrop-blur-sm rounded-xl px-2.5 py-1.5 shadow-sm">
+                    <span class="text-xs font-semibold text-warm-muted dark:text-neutral-400 capitalize">
+                      {fullDate(event.data.date, lang)}
+                    </span>
+                  </div>
+                </div>
+
+                <!-- Card body -->
+                <div class="p-5 flex flex-col gap-2 flex-1">
+                  <h3 class="font-display font-bold text-base leading-snug text-warm-text dark:text-neutral-100 group-hover:text-brand-orange transition-colors duration-200">
+                    {title}
+                  </h3>
+                  <div class="flex items-center gap-1.5 text-xs text-warm-muted dark:text-neutral-400">
+                    <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                      <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
+                      <circle cx="12" cy="10" r="3"/>
+                    </svg>
+                    {location}
+                  </div>
+                </div>
+
+              </div>
+            );
+          })}
+        </div>
+      </div>
+    )}
+
+  </div>
+</section>

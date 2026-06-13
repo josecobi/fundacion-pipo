@@ -1,0 +1,165 @@
+---
+import { getLangFromUrl, useTranslations } from '../i18n/utils';
+import '../styles/global.css';
+
+interface Props {
+  title?: string;
+  description?: string;
+}
+
+const { title = 'Fundación Pipo Navarro', description = '' } = Astro.props;
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+const otherLang = lang === 'es' ? 'en' : 'es';
+const otherLangPath = lang === 'es'
+  ? Astro.url.pathname.replace(/^\/?/, '/en/')
+  : Astro.url.pathname.replace(/^\/en/, '') || '/';
+---
+
+<!DOCTYPE html>
+<html lang={lang} data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content={description} />
+  <title>{title}</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
+</head>
+<body class="bg-warm-white dark:bg-warm-dark text-warm-text dark:text-neutral-100 transition-colors duration-300">
+
+  <!-- Noise texture overlay (light mode only) -->
+  <div
+    aria-hidden="true"
+    class="pointer-events-none fixed inset-0 z-0 opacity-[0.025] dark:hidden"
+    style="background-image: url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23noise)' opacity='1'/%3E%3C/svg%3E\"); background-repeat: repeat;"
+  ></div>
+
+  <!-- NAV -->
+  <header class="fixed top-0 left-0 right-0 z-50
+       border-b border-warm-border dark:border-neutral-800
+       bg-warm-white/90 dark:bg-warm-dark/90
+       backdrop-blur-md transition-colors duration-300">
+    <div class="max-w-6xl mx-auto px-6 flex items-center justify-between h-16">
+
+      <!-- Logo -->
+      <a href={lang === 'es' ? '/' : '/en/'} class="flex items-center gap-3">
+        <div class="w-9 h-9 rounded-lg bg-brand-orange flex items-center justify-center shrink-0">
+          <!-- Music note SVG icon -->
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M9 18V5l12-2v13" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            <circle cx="6" cy="18" r="3" stroke="white" stroke-width="2"/>
+            <circle cx="18" cy="16" r="3" stroke="white" stroke-width="2"/>
+          </svg>
+        </div>
+        <span class="font-display font-bold text-base leading-tight hidden sm:block text-warm-text dark:text-neutral-100">
+          Fundación<br/>Pipo Navarro
+        </span>
+      </a>
+
+      <!-- Desktop nav links -->
+      <nav class="hidden md:flex items-center gap-8">
+        <a href="#mision" class="text-sm font-medium text-warm-muted dark:text-neutral-400 hover:text-brand-orange dark:hover:text-brand-orange transition-colors">{t('nav.mission')}</a>
+        <a href="#donar" class="text-sm font-medium text-warm-muted dark:text-neutral-400 hover:text-brand-orange dark:hover:text-brand-orange transition-colors">{t('nav.donate')}</a>
+        <a href="#eventos" class="text-sm font-medium text-warm-muted dark:text-neutral-400 hover:text-brand-orange dark:hover:text-brand-orange transition-colors">{t('nav.events')}</a>
+        <a href="#historia" class="text-sm font-medium text-warm-muted dark:text-neutral-400 hover:text-brand-orange dark:hover:text-brand-orange transition-colors">{t('nav.past_events')}</a>
+        <a href="#galeria" class="text-sm font-medium text-warm-muted dark:text-neutral-400 hover:text-brand-orange dark:hover:text-brand-orange transition-colors">{t('nav.gallery')}</a>
+        <a href="#contacto" class="text-sm font-medium text-warm-muted dark:text-neutral-400 hover:text-brand-orange dark:hover:text-brand-orange transition-colors">{t('nav.contact')}</a>
+      </nav>
+
+      <!-- Controls: lang + theme + hamburger -->
+      <div class="flex items-center gap-2">
+
+        <!-- Language toggle -->
+        <a
+          href={otherLangPath}
+          class="text-xs font-semibold tracking-widest uppercase px-3 py-1.5 rounded-lg border border-warm-border dark:border-neutral-700 bg-warm-card dark:bg-neutral-800 text-warm-muted dark:text-neutral-400 hover:border-brand-orange hover:text-brand-orange transition-colors"
+        >
+          {otherLang}
+        </a>
+
+        <!-- Theme toggle button -->
+        <button
+          id="theme-toggle"
+          aria-label="Toggle theme"
+          class="w-9 h-9 rounded-lg border border-warm-border dark:border-neutral-700 bg-warm-card dark:bg-neutral-800 flex items-center justify-center text-warm-muted dark:text-neutral-400 hover:border-brand-orange hover:text-brand-orange transition-colors"
+        >
+          <!-- Sun icon (shown in dark mode) -->
+          <svg id="icon-sun" class="hidden dark:block" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/>
+            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/>
+            <line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/>
+            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>
+          </svg>
+          <!-- Moon icon (shown in light mode) -->
+          <svg id="icon-moon" class="block dark:hidden" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+          </svg>
+        </button>
+
+        <!-- Mobile hamburger -->
+        <button
+          id="hamburger"
+          aria-label="Open menu"
+          class="md:hidden w-9 h-9 rounded-lg border border-warm-border dark:border-neutral-700 bg-warm-card dark:bg-neutral-800 flex items-center justify-center text-warm-text dark:text-neutral-300"
+        >
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+            <line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/>
+          </svg>
+        </button>
+
+      </div>
+    </div>
+
+    <!-- Mobile menu (hidden by default) -->
+    <div id="mobile-menu" class="hidden md:hidden border-t border-warm-border dark:border-neutral-800 bg-warm-white dark:bg-warm-dark px-6 py-4">
+      <nav class="flex flex-col gap-1">
+        <a href="#mision" class="mobile-nav-link py-2.5 border-b border-warm-border dark:border-neutral-800 text-sm font-medium text-warm-muted dark:text-neutral-300">{t('nav.mission')}</a>
+        <a href="#donar" class="mobile-nav-link py-2.5 border-b border-warm-border dark:border-neutral-800 text-sm font-medium text-warm-muted dark:text-neutral-300">{t('nav.donate')}</a>
+        <a href="#eventos" class="mobile-nav-link py-2.5 border-b border-warm-border dark:border-neutral-800 text-sm font-medium text-warm-muted dark:text-neutral-300">{t('nav.events')}</a>
+        <a href="#historia" class="mobile-nav-link py-2.5 border-b border-warm-border dark:border-neutral-800 text-sm font-medium text-warm-muted dark:text-neutral-300">{t('nav.past_events')}</a>
+        <a href="#galeria" class="mobile-nav-link py-2.5 border-b border-warm-border dark:border-neutral-800 text-sm font-medium text-warm-muted dark:text-neutral-300">{t('nav.gallery')}</a>
+        <a href="#contacto" class="py-2.5 text-sm font-medium text-warm-muted dark:text-neutral-300">{t('nav.contact')}</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- PAGE CONTENT -->
+  <main class="relative z-10">
+    <slot />
+  </main>
+
+  <!-- THEME + MENU SCRIPTS -->
+  <script>
+    // --- Theme toggle ---
+    // Light is the default; only go dark if the user has explicitly chosen it.
+    const saved = localStorage.getItem('theme');
+    const initial = saved === 'dark' ? 'dark' : 'light';
+    document.documentElement.setAttribute('data-theme', initial);
+    if (initial === 'dark') document.documentElement.classList.add('dark');
+
+    document.getElementById('theme-toggle')?.addEventListener('click', () => {
+      const isDark = document.documentElement.classList.contains('dark');
+      const next = isDark ? 'light' : 'dark';
+      document.documentElement.classList.toggle('dark', !isDark);
+      document.documentElement.setAttribute('data-theme', next);
+      localStorage.setItem('theme', next);
+    });
+
+    // --- Mobile menu toggle ---
+    const hamburger = document.getElementById('hamburger');
+    const mobileMenu = document.getElementById('mobile-menu');
+
+    hamburger?.addEventListener('click', () => {
+      mobileMenu?.classList.toggle('hidden');
+    });
+
+    // Close mobile menu when a nav link is clicked
+    mobileMenu?.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => mobileMenu.classList.add('hidden'));
+    });
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,180 @@
+---
+import { getLangFromUrl, useTranslations } from '../i18n/utils';
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+
+const bioParagraphs = [
+  {
+    es: 'Este meritorio hijo de Panamá nació en la ciudad de Panamá el 2 de diciembre de 1921. Fue hijo de don Ezequiel Navarro y doña Laura Flores de Navarro.',
+    en: 'This distinguished son of Panama was born in Panama City on December 2, 1921. He was the son of don Ezequiel Navarro and doña Laura Flores de Navarro.',
+  },
+  {
+    es: 'Su primer acercamiento a la música ocurrió en la banda del Colegio Don Bosco, institución salesiana en la que cursó sus estudios y donde aprendió a tocar el redoblante. Más adelante ingresó al Conservatorio Nacional, del que se graduó en 1941, guiado por maestros como José Luis Cajar, con quien inició sus estudios de trompeta, así como Cleveland Reynolds, Rebeca de Vergel y Hans Janowits, entre otros.',
+    en: 'His first encounter with music took place in the band of Colegio Don Bosco, a Salesian institution where he studied and learned to play the snare drum. He later enrolled at the National Conservatory, from which he graduated in 1941, guided by teachers such as José Luis Cajar, with whom he began his trumpet studies, as well as Cleveland Reynolds, Rebeca de Vergel, and Hans Janowits, among others.',
+  },
+  {
+    es: 'Apenas obtuvo su título en el Conservatorio Nacional, se integró a la vida profesional como músico de la Orquesta Continental de Palito Hayes. Poco después formó su propia agrupación, la Orquesta Imperial de Pipo Navarro, así como el Conjunto Estrellas Panameñas de Pipo Navarro, donde brilló como director, arreglista y compositor.',
+    en: "Shortly after obtaining his degree from the National Conservatory, he joined professional life as a musician with Palito Hayes' Orquesta Continental. He soon formed his own ensemble, the Orquesta Imperial de Pipo Navarro, as well as the Conjunto Estrellas Panameñas de Pipo Navarro, where he excelled as director, arranger, and composer.",
+  },
+  {
+    es: 'Durante su juventud, mientras estudiaba en el Colegio Don Bosco, su contextura delgada cambió con el tiempo, y de manera cariñosa comenzaron a llamarlo "Pipo", apodo con el que sería recordado por siempre. Contrajo matrimonio con la señora Benigna María Barría, oriunda de la provincia de Chiriquí, con quien formó su familia y tuvo a sus hijos Deyka Ruth y Ezequiel.',
+    en: 'During his youth, while studying at Colegio Don Bosco, his slender frame changed over time, and he was affectionately nicknamed "Pipo" — the name by which he would always be remembered. He married doña Benigna María Barría, from the province of Chiriquí, with whom he raised his family and had two children: Deyka Ruth and Ezequiel.',
+  },
+  {
+    es: 'Su trayectoria también lo llevó a Centroamérica y México, país en el que residió durante dos años mientras ejercía su profesión y enriquecía su formación al intercambiar conocimientos con el reconocido maestro panameño Roque Cordero.',
+    en: 'His career also took him to Central America and Mexico, where he lived for two years practicing his craft and enriching his musical formation through exchanges with the renowned Panamanian maestro Roque Cordero.',
+  },
+  {
+    es: 'Dotado de una profunda vocación por la enseñanza, el maestro Pipo Navarro dedicó buena parte de su vida a formar nuevas generaciones de músicos. Enseñó en el Departamento de Música de la Universidad de Panamá, dirigió la Escuela Nacional de Música —donde también impartió la materia de Estructuración Musical—, fue miembro de la Orquesta Sinfónica de Panamá y profesor de la Escuela Elena Ch. de Pinate, donde además fundó la banda musical de este reconocido plantel secundario.',
+    en: "Gifted with a deep vocation for teaching, Maestro Pipo Navarro devoted much of his life to training new generations of musicians. He taught in the Music Department of the University of Panama, directed the National School of Music — where he also taught Musical Structure —, was a member of the Panama Symphony Orchestra, and taught at the Escuela Elena Ch. de Pinate, where he also founded the school's musical band.",
+  },
+  {
+    es: 'Entre sus más destacadas ejecutorias figuran la organización y dirección de la Orquesta del Hotel El Panamá, donde trabajó por más de diez años; la dirección del Primer Festival Latinoamericano; su participación en la dirección del Festival OTI, en el que obtuvo importantes reconocimientos; y su labor como director de la Banda de Bomberos de La Chorrera.',
+    en: 'Among his most notable achievements were the organization and direction of the Hotel El Panamá Orchestra, where he worked for over ten years; the direction of the First Latin American Festival; his participation in directing the OTI Festival, where he received important recognition; and his role as director of the La Chorrera Firefighters\' Band.',
+  },
+  {
+    es: 'El profesor Ezequiel A. Navarro Flores dejó un legado invaluable en la música panameña. Entre sus mayores aportes se encuentra la formación de músicos de gran prestigio nacional, como el maestro Luis Efraín "Pin" Castro y Jaime Lombardo, así como memorables arreglos musicales, entre ellos "Amando Soy Feliz", interpretada por los Hermanos Rigual; "Basta de Soñar", del autor Pepe Zamora; y "Navidad", de su propia autoría. Del mismo modo, compartió escenarios con artistas de la talla de Olga Guillot, Celia Cruz, Willie Colón y Pellín Rodríguez, del Gran Combo.',
+    en: 'Professor Ezequiel A. Navarro Flores left an invaluable legacy in Panamanian music. Among his greatest contributions was the training of nationally prestigious musicians such as Maestro Luis Efraín "Pin" Castro and Jaime Lombardo, as well as memorable musical arrangements including "Amando Soy Feliz," performed by Los Hermanos Rigual; "Basta de Soñar," by composer Pepe Zamora; and "Navidad," of his own authorship. He also shared stages with artists of the caliber of Olga Guillot, Celia Cruz, Willie Colón, and Pellín Rodríguez of El Gran Combo.',
+  },
+  {
+    es: 'Pipo partió de la vida terrenal el 4 de noviembre de 1981, dejando tras de sí una huella luminosa en la cultura panameña. Su memoria permanece viva en su música, en sus discípulos y en el cariño de quienes lo recuerdan como un hombre siempre sonriente, generoso y profundamente entregado a su arte.',
+    en: 'Pipo departed this life on November 4, 1981, leaving behind a luminous mark on Panamanian culture. His memory lives on in his music, in his students, and in the affection of all who remember him as a man who was always smiling, generous, and deeply devoted to his art.',
+  },
+];
+
+const foundationParagraphs = [
+  {
+    es: 'La Fundación Pipo Navarro surge como una iniciativa de sus hijos, Deyka y Ezequiel, junto con Moisés Véliz Arosemena, con el propósito de dar continuidad al legado del maestro Ezequiel A. Navarro Flores, orientando y motivando a jóvenes estudiantes en el aprendizaje y la ejecución de instrumentos musicales.',
+    en: 'The Pipo Navarro Foundation arose as an initiative by his children, Deyka and Ezequiel, together with Moisés Véliz Arosemena, with the purpose of continuing the legacy of Maestro Ezequiel A. Navarro Flores, guiding and motivating young students in the learning and performance of musical instruments.',
+  },
+  {
+    es: 'La Fundación fue constituida mediante la Escritura Pública No. 23,841, de fecha 25 de noviembre de 2011, y su Reglamento Fundacional quedó establecido mediante la Escritura Pública No. 24,392, de fecha 5 de diciembre de 2011.',
+    en: 'The Foundation was established through Public Deed No. 23,841, dated November 25, 2011, and its Foundational Regulations were set forth through Public Deed No. 24,392, dated December 5, 2011.',
+  },
+  {
+    es: 'Se trata de una organización de interés privado con sede en la República de Panamá, cuyas actuaciones son dirigidas por un Consejo de Fundación.',
+    en: 'It is a private interest organization based in the Republic of Panama, whose activities are directed by a Foundation Council.',
+  },
+];
+
+const missionText = {
+  es: 'La Fundación Pipo Navarro está comprometida con promover la democratización y el acceso a la educación musical, con énfasis en niños y adolescentes en condición de vulnerabilidad en la República de Panamá.',
+  en: 'The Pipo Navarro Foundation is committed to promoting the democratization of and access to music education, with an emphasis on children and adolescents in vulnerable situations in the Republic of Panama.',
+};
+
+const visionText = {
+  es: 'Consolidarse como una organización referente en la promoción de la educación musical en Panamá, facilitando el acceso a instrumentos musicales y articulando esfuerzos con entidades del sector público y privado para impulsar la formación de músicos y agrupaciones musicales que enaltezcan el nombre del país.',
+  en: 'To become a leading organization in the promotion of music education in Panama, facilitating access to musical instruments and coordinating efforts with public and private sector entities to support the training of musicians and musical groups that bring honor to the country.',
+};
+---
+
+<section id="historia" class="relative py-28 bg-neutral-50 dark:bg-neutral-900/50 overflow-hidden">
+
+  <!-- BACKGROUND DECORATION -->
+  <div class="absolute inset-0 pointer-events-none select-none" aria-hidden="true">
+    <svg class="absolute top-10 left-6 w-[100px] opacity-[0.05] dark:opacity-[0.07]" viewBox="0 0 100 160" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <line x1="30" y1="10" x2="30" y2="110" stroke="#C85A1A" stroke-width="4" stroke-linecap="round"/>
+      <line x1="70" y1="10" x2="70" y2="100" stroke="#C85A1A" stroke-width="4" stroke-linecap="round"/>
+      <line x1="30" y1="10" x2="70" y2="10"  stroke="#C85A1A" stroke-width="4" stroke-linecap="round"/>
+      <ellipse cx="18" cy="112" rx="14" ry="9" fill="#C85A1A" transform="rotate(-15 18 112)"/>
+      <ellipse cx="58" cy="102" rx="14" ry="9" fill="#C85A1A" transform="rotate(-15 58 102)"/>
+    </svg>
+    <svg class="absolute bottom-10 right-6 w-[180px] opacity-[0.04] dark:opacity-[0.06]" viewBox="0 0 180 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <line x1="0"   y1="30"  x2="180" y2="30"  stroke="#1A7A4A" stroke-width="1.5"/>
+      <line x1="0"   y1="55"  x2="180" y2="55"  stroke="#1A7A4A" stroke-width="1.5"/>
+      <line x1="0"   y1="80"  x2="180" y2="80"  stroke="#1A7A4A" stroke-width="1.5"/>
+      <line x1="0"   y1="105" x2="180" y2="105" stroke="#1A7A4A" stroke-width="1.5"/>
+    </svg>
+  </div>
+
+  <div class="max-w-6xl mx-auto px-6 relative z-10">
+
+    <!-- Section header -->
+    <div class="text-center mb-16">
+      <div class="flex items-center justify-center gap-3 mb-4">
+        <span class="block w-6 h-0.5 bg-brand-orange"></span>
+        <span class="text-xs font-semibold tracking-[0.15em] uppercase text-brand-orange">
+          {lang === 'es' ? 'Nuestra historia' : 'Our history'}
+        </span>
+        <span class="block w-6 h-0.5 bg-brand-orange"></span>
+      </div>
+      <h2 class="font-display font-bold text-4xl md:text-5xl text-warm-text dark:text-neutral-100 mb-5">
+        {t('historia.title')}
+      </h2>
+      <p class="text-lg text-warm-muted dark:text-neutral-400 max-w-lg mx-auto leading-relaxed">
+        {t('historia.subtitle')}
+      </p>
+    </div>
+
+    <!-- Biography prose -->
+    <div class="max-w-3xl mx-auto">
+
+      <div class="space-y-5">
+        {bioParagraphs.map((p) => (
+          <p class="text-base text-warm-muted dark:text-neutral-400 leading-relaxed">
+            {lang === 'es' ? p.es : p.en}
+          </p>
+        ))}
+      </div>
+
+      <!-- Foundation origin -->
+      <div class="mt-14 pt-10 border-t border-warm-border dark:border-neutral-800">
+        <div class="flex items-center gap-3 mb-6">
+          <span class="block w-6 h-0.5 bg-brand-orange"></span>
+          <span class="text-xs font-semibold tracking-[0.15em] uppercase text-brand-orange">
+            {lang === 'es' ? 'Origen de la Fundación' : 'About the Foundation'}
+          </span>
+          <span class="block w-6 h-0.5 bg-brand-orange"></span>
+        </div>
+        <div class="space-y-4">
+          {foundationParagraphs.map((p) => (
+            <p class="text-base text-warm-muted dark:text-neutral-400 leading-relaxed">
+              {lang === 'es' ? p.es : p.en}
+            </p>
+          ))}
+        </div>
+      </div>
+
+      <!-- Mission + Vision cards -->
+      <div class="mt-10 grid grid-cols-1 sm:grid-cols-2 gap-5">
+
+        <!-- Mission -->
+        <div class="bg-brand-orange/5 dark:bg-brand-orange/10 border border-brand-orange/20 dark:border-brand-orange/30 rounded-2xl p-6 flex flex-col gap-3">
+          <div class="flex items-center gap-2">
+            <div class="w-7 h-7 rounded-lg bg-brand-orange/15 flex items-center justify-center shrink-0">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#C85A1A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1z"/><line x1="4" y1="22" x2="4" y2="15"/>
+              </svg>
+            </div>
+            <h3 class="font-display font-bold text-sm uppercase tracking-widest text-brand-orange">
+              {lang === 'es' ? 'Misión' : 'Mission'}
+            </h3>
+          </div>
+          <p class="text-sm text-warm-muted dark:text-neutral-400 leading-relaxed">
+            {lang === 'es' ? missionText.es : missionText.en}
+          </p>
+        </div>
+
+        <!-- Vision -->
+        <div class="bg-brand-green/5 dark:bg-brand-green/10 border border-brand-green/20 dark:border-brand-green/30 rounded-2xl p-6 flex flex-col gap-3">
+          <div class="flex items-center gap-2">
+            <div class="w-7 h-7 rounded-lg bg-brand-green/15 flex items-center justify-center shrink-0">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#1A7A4A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/>
+              </svg>
+            </div>
+            <h3 class="font-display font-bold text-sm uppercase tracking-widest text-brand-green">
+              {lang === 'es' ? 'Visión' : 'Vision'}
+            </h3>
+          </div>
+          <p class="text-sm text-warm-muted dark:text-neutral-400 leading-relaxed">
+            {lang === 'es' ? visionText.es : visionText.en}
+          </p>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+</section>

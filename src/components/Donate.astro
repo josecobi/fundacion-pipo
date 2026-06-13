@@ -1,0 +1,660 @@
+---
+import { getLangFromUrl, useTranslations } from '../i18n/utils';
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+---
+
+<section id="donar" class="relative py-28 bg-neutral-50 dark:bg-neutral-900/50 overflow-hidden">
+
+  <!-- =============================================
+       BACKGROUND DECORATIONS
+  ============================================= -->
+  <div class="absolute inset-0 pointer-events-none select-none" aria-hidden="true">
+
+    <!-- Large treble clef faint background -->
+    <svg class="absolute -left-8 top-1/2 -translate-y-1/2 w-55 opacity-[0.04] dark:opacity-[0.05]" viewBox="0 0 200 400" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M120 20 C160 20, 180 60, 180 100 C180 160, 120 180, 80 200 C40 220, 20 260, 40 300 C60 340, 120 340, 140 300 C160 260, 140 220, 100 200 L100 360 C100 380, 80 390, 60 380" stroke="#C85A1A" stroke-width="8" stroke-linecap="round" fill="none"/>
+      <circle cx="80" cy="370" r="20" stroke="#C85A1A" stroke-width="8" fill="none"/>
+    </svg>
+
+    <!-- Tropical leaf bottom right -->
+    <svg class="absolute -bottom-10 -right-10 w-65 opacity-[0.05] dark:opacity-[0.07]" viewBox="0 0 260 300" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M220 10 C160 60, 60 160, 20 290 C80 230, 180 130, 220 10Z" fill="#1A7A4A"/>
+      <path d="M220 10 C160 80, 70 190, 20 290" stroke="#1A7A4A" stroke-width="2"/>
+    </svg>
+
+  </div>
+
+  <div class="max-w-6xl mx-auto px-6 relative z-10">
+
+    <!-- Section header -->
+    <div class="text-center mb-20">
+      <div class="flex items-center justify-center gap-3 mb-4">
+        <span class="block w-6 h-0.5 bg-brand-orange"></span>
+        <span class="text-xs font-semibold tracking-[0.15em] uppercase text-brand-orange">
+          {lang === 'es' ? 'Haz la diferencia' : 'Make a difference'}
+        </span>
+        <span class="block w-6 h-0.5 bg-brand-orange"></span>
+      </div>
+      <h2 class="font-display font-bold text-4xl md:text-5xl text-warm-text dark:text-neutral-100 mb-5">
+        {t('donate.title')}
+      </h2>
+      <p class="text-lg text-warm-muted dark:text-neutral-400 max-w-lg mx-auto leading-relaxed">
+        {t('donate.subtitle')}
+      </p>
+    </div>
+
+    <!-- Main content: steps left, instruments right -->
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center mb-20">
+
+      <!-- LEFT: 3-step process -->
+      <div class="flex flex-col gap-8">
+
+        <!-- Step 1 -->
+        <div class="flex gap-6 items-start group">
+          <div class="shrink-0 flex flex-col items-center">
+            <div class="w-12 h-12 rounded-full bg-brand-orange flex items-center justify-center shadow-lg shadow-brand-orange/20 group-hover:scale-110 transition-transform duration-200">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 1h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.6a16 16 0 0 0 6 6l1.27-.95a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/>
+              </svg>
+            </div>
+            <!-- Connector line -->
+            <div class="w-px h-12 bg-warm-border dark:bg-neutral-700 mt-2"></div>
+          </div>
+          <div class="pt-2 pb-4">
+            <div class="flex items-center gap-2 mb-1">
+              <span class="text-xs font-bold tracking-widest uppercase text-brand-orange">
+                {lang === 'es' ? 'Paso 1' : 'Step 1'}
+              </span>
+            </div>
+            <h3 class="font-display font-bold text-xl text-warm-text dark:text-neutral-100 mb-2">
+              {t('donate.step1_title')}
+            </h3>
+            <p class="text-warm-muted dark:text-neutral-400 leading-relaxed text-sm">
+              {t('donate.step1_text')}
+            </p>
+          </div>
+        </div>
+
+        <!-- Step 2 -->
+        <div class="flex gap-6 items-start group">
+          <div class="shrink-0 flex flex-col items-center">
+            <div class="w-12 h-12 rounded-full bg-brand-green flex items-center justify-center shadow-lg shadow-brand-green/20 group-hover:scale-110 transition-transform duration-200">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="1" y="3" width="15" height="13" rx="1"/><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/>
+                <circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/>
+              </svg>
+            </div>
+            <div class="w-px h-12 bg-warm-border dark:bg-neutral-700 mt-2"></div>
+          </div>
+          <div class="pt-2 pb-4">
+            <div class="flex items-center gap-2 mb-1">
+              <span class="text-xs font-bold tracking-widest uppercase text-brand-green">
+                {lang === 'es' ? 'Paso 2' : 'Step 2'}
+              </span>
+            </div>
+            <h3 class="font-display font-bold text-xl text-warm-text dark:text-neutral-100 mb-2">
+              {t('donate.step2_title')}
+            </h3>
+            <p class="text-warm-muted dark:text-neutral-400 leading-relaxed text-sm">
+              {t('donate.step2_text')}
+            </p>
+          </div>
+        </div>
+
+        <!-- Step 3 -->
+        <div class="flex gap-6 items-start group">
+          <div class="shrink-0">
+            <div class="w-12 h-12 rounded-full bg-brand-gold flex items-center justify-center shadow-lg shadow-brand-gold/20 group-hover:scale-110 transition-transform duration-200">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
+              </svg>
+            </div>
+          </div>
+          <div class="pt-2">
+            <div class="flex items-center gap-2 mb-1">
+              <span class="text-xs font-bold tracking-widest uppercase text-brand-gold">
+                {lang === 'es' ? 'Paso 3' : 'Step 3'}
+              </span>
+            </div>
+            <h3 class="font-display font-bold text-xl text-warm-text dark:text-neutral-100 mb-2">
+              {t('donate.step3_title')}
+            </h3>
+            <p class="text-warm-muted dark:text-neutral-400 leading-relaxed text-sm">
+              {t('donate.step3_text')}
+            </p>
+          </div>
+        </div>
+
+        <!-- Shipping note -->
+        <div class="flex gap-4 p-4 bg-warm-card dark:bg-neutral-900/60 border border-warm-border dark:border-neutral-800 rounded-xl">
+          <div class="shrink-0 w-9 h-9 rounded-lg bg-brand-green/10 dark:bg-brand-green/15 flex items-center justify-center">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#1A7A4A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="1" y="3" width="15" height="13" rx="1"/><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/>
+              <circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/>
+            </svg>
+          </div>
+          <div>
+            <p class="text-sm font-semibold text-warm-text dark:text-neutral-200">{t('donate.shipping_title')}</p>
+            <p class="text-xs text-warm-muted dark:text-neutral-400 leading-relaxed mt-0.5">{t('donate.shipping_body')}</p>
+          </div>
+        </div>
+
+        <!-- CTA button -->
+        <div class="pt-4">
+          <a
+            href="#contacto"
+            class="inline-flex items-center gap-2 px-8 py-4 rounded-xl bg-brand-orange text-white text-sm font-semibold hover:-translate-y-0.5 hover:shadow-lg hover:shadow-brand-orange/25 transition-all duration-150"
+          >
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
+            </svg>
+            {t('donate.cta')}
+          </a>
+        </div>
+
+      </div>
+
+      <!-- RIGHT: Instrument types visual grid -->
+      <div class="grid grid-cols-2 gap-4">
+
+        <!-- Instrument card: Guitar -->
+        <div class="bg-warm-card dark:bg-neutral-900 border border-warm-border dark:border-neutral-800 rounded-2xl p-6 flex flex-col items-center gap-3 hover:border-brand-orange dark:hover:border-brand-orange hover:shadow-lg transition-all duration-300">
+          <svg fill="#C85A1A" width="40" height="40" viewBox="0 0 511.999 511.999" xmlns="http://www.w3.org/2000/svg">
+            <path d="M506.999,5.106c-3.542-3.541-8.392-5.348-13.419-4.949l-39.077,3.085c-4.049,0.318-7.861,2.076-10.734,4.949l-4.665,4.665c0,0-5.33-5.979-11.031-0.278c-5.701,5.701,0.278,11.031,0.278,11.031l-5.704,5.704c0,0-5.608-5.701-11.031-0.278c-5.423,5.423,0.278,11.031,0.278,11.031l-5.586,5.586c-3.125,3.125-4.9,7.279-4.998,11.697c0,0-0.434,20.891-0.426,21.173l-61.202,53.619c-16.63-11.064-35.213-18.301-54.86-21.228c-4.152-0.626-8.023,2.246-8.641,6.401c-0.618,4.154,2.247,8.023,6.401,8.641c25.663,3.823,49.342,15.958,68.476,35.093c21.55,21.55,34.384,49.418,36.138,78.47c0.874,14.489-1.046,28.515-5.707,41.69c-4.91,13.877-12.63,26.143-22.945,36.457c-11.428,11.428-26.592,18.41-33.067,21.39c-1.321,0.608-18.273,5.495-19.264,33.709c-1.176,33.471-14.396,64.364-37.027,86.996c-13.374,13.373-29.312,23.349-47.372,29.652c-17.193,6-35.534,8.41-54.516,7.16c-38.232-2.514-75.015-19.629-103.575-48.191c-28.56-28.56-45.675-65.343-48.192-103.572c-1.25-18.981,1.159-37.322,7.16-54.516c6.303-18.06,16.28-33.998,29.653-47.372c22.626-22.626,53.513-35.776,86.969-37.027c0,0,25.984,0.31,32.566-16.842c0.531-1.384,9.434-22.365,22.558-35.49c10.315-10.315,22.581-18.035,36.458-22.945c3.959-1.4,6.032-5.746,4.631-9.705c-1.4-3.959-5.746-6.034-9.705-4.631c-16.031,5.672-30.208,14.597-42.139,26.528c-14.914,14.913-23.386,34.227-25.82,40.329c-0.435,0.705-4.301,6.218-19.315,7.566c-37.228,1.439-71.657,16.159-96.96,41.463c-15.005,15.005-26.194,32.876-33.258,53.114c-6.677,19.133-9.361,39.497-7.976,60.526c2.76,41.911,21.444,82.158,52.614,113.327c31.17,31.17,71.416,49.855,113.326,52.614c3.585,0.236,35.009,1.198,60.527-7.976c20.172-7.253,38.108-18.253,53.114-33.258c25.355-25.355,38.706-59.946,41.474-97.272c1.253-16.895,9.371-19.887,10.424-20.372c7.215-3.321,24.109-11.1,37.46-24.451c11.931-11.93,20.856-26.108,26.528-42.139c5.345-15.106,7.549-31.147,6.551-47.679c-1.417-23.483-9.221-46.244-22.429-66.157l53.631-61.215c0.157,0.004,21.18-0.433,21.18-0.433c4.418-0.098,8.572-1.874,11.696-4.998l5.586-5.586c0,0,5.175,6.134,11.031,0.278c5.856-5.856-0.278-11.031-0.278-11.031l5.704-5.704c0,0,5.623,5.687,11.031,0.278c5.409-5.409-0.278-11.031-0.278-11.031l4.665-4.665c2.871-2.871,4.629-6.682,4.949-10.732l3.085-39.077C512.342,13.538,510.538,8.646,506.999,5.106z M370.834,160.205c-2.837-3.418-8.209-11.571-18.714-18.743l56-49.062l11.599,11.599L370.834,160.205z M493.159,57.582l-37.464,37.464c-0.342,0.342-21.65,0.999-21.65,0.999c-0.491,0-0.972-0.2-1.32-0.547l-16.118-16.118c-0.359-0.359,0.108-22.629,0.45-22.972l37.463-37.463c0.314-0.314,40.256-3.628,40.256-3.628c0.049-0.004,1.12,0.194,1.469,0.541c0.387,0.387,0.585,0.923,0.541,1.469C496.787,17.327,493.474,57.268,493.159,57.582z"/>
+            <path d="M278.311,233.792c-8.3-8.302-19.337-12.873-31.077-12.873c-11.74,0-22.775,4.571-31.077,12.873c-8.302,8.3-12.873,19.337-12.873,31.077c0,11.74,4.571,22.776,12.873,31.077c8.3,8.302,19.337,12.873,31.077,12.873c11.739,0,22.776-4.571,31.077-12.873c8.302-8.3,12.873-19.337,12.873-31.077C291.184,253.13,286.613,242.093,278.311,233.792z M267.558,285.192c-5.428,5.428-12.646,8.418-20.323,8.418s-14.895-2.99-20.323-8.418c-5.428-5.428-8.418-12.646-8.418-20.323c0-7.677,2.99-14.895,8.418-20.323c5.428-5.428,12.646-8.418,20.323-8.418s14.895,2.99,20.323,8.418s8.418,12.646,8.418,20.323C275.976,272.546,272.986,279.764,267.558,285.192z"/>
+            <path d="M260.403,109.615c-3.387,0.147-6.797,0.437-10.131,0.863c-4.166,0.531-7.024,4.329-6.58,8.505c0.818,7.685,8.179,6.623,8.505,6.58c2.916-0.372,5.898-0.626,8.863-0.754c4.195-0.182,7.45-3.73,7.268-7.925S264.611,109.442,260.403,109.615z"/>
+            <path d="M193.779,405.946l-12.058-12.058l10.128-10.128c2.97-2.97,2.97-7.784,0-10.753c-2.97-2.97-7.784-2.97-10.753,0l-10.127,10.128l-15.623-15.623l22.773-22.773c2.97-2.97,2.97-7.784,0-10.753c-2.97-2.97-7.784-2.97-10.753,0l-22.773,22.773l-15.623-15.623l35.056-35.058c2.97-2.97,2.97-7.784,0-10.753c-2.97-2.97-7.784-2.97-10.753,0l-35.057,35.058l-12.058-12.058c-4.331-4.331-10.091-6.717-16.217-6.717c-6.126,0-11.884,2.386-16.216,6.717s-6.717,10.091-6.717,16.217c0,6.126,2.386,11.885,6.717,16.216l87.621,87.621c4.331,4.331,10.09,6.717,16.216,6.717c6.126,0,11.885-2.386,16.217-6.717c4.331-4.331,6.717-10.091,6.717-16.217C200.496,416.037,198.111,410.278,193.779,405.946z M183.024,427.626c-1.459,1.459-3.399,2.262-5.463,2.262c-2.063,0-4.004-0.803-5.463-2.262l-87.621-87.622c-1.459-1.459-2.263-3.398-2.263-5.462c0-2.064,0.803-4.004,2.263-5.463c1.459-1.459,3.398-2.263,5.462-2.263c2.063,0,4.004,0.804,5.463,2.263l87.621,87.621c1.46,1.459,2.264,3.399,2.264,5.463C185.287,424.226,184.483,426.167,183.024,427.626z"/>
+            <path d="M462.52,36.853l-4.439-4.439c-1.578-1.578-4.158-1.578-5.735,0l-4.439,4.439c-1.578,1.578-1.578,4.158,0,5.735l4.439,4.439c1.578,1.578,4.158,1.578,5.735,0l4.439-4.439C464.097,41.011,464.097,38.431,462.52,36.853z"/>
+            <path d="M479.689,54.024l-4.439-4.439c-1.578-1.578-4.158-1.578-5.735,0l-4.439,4.439c-1.578,1.578-1.578,4.158,0,5.735l4.439,4.439c1.578,1.578,4.158,1.578,5.735,0l4.439-4.439C481.267,58.182,481.267,55.601,479.689,54.024z"/>
+            <path d="M463.231,70.481l-4.439-4.439c-1.578-1.578-4.158-1.578-5.735,0l-4.439,4.439c-1.578,1.578-1.578,4.158,0,5.735l4.439,4.439c1.578,1.578,4.158,1.578,5.735,0l4.439-4.439C464.809,74.639,464.809,72.058,463.231,70.481z"/>
+            <path d="M446.062,53.312l-4.439-4.439c-1.578-1.578-4.158-1.578-5.735,0l-4.439,4.439c-1.578,1.578-1.578,4.158,0,5.735l4.439,4.439c1.578,1.578,4.158,1.578,5.735,0l4.439-4.439C447.639,57.47,447.639,54.89,446.062,53.312z"/>
+            <path d="M303.604,208.5c-15.035-15.035-35.054-23.315-56.369-23.315c-21.315,0-41.334,8.28-56.37,23.316c-31.082,31.082-31.082,81.655,0,112.737c15.036,15.036,35.054,23.316,56.37,23.316c21.314,0,41.333-8.28,56.369-23.316C334.686,290.156,334.686,239.582,303.604,208.5z M292.851,310.484c-12.163,12.162-28.363,18.861-45.616,18.861s-33.452-6.699-45.616-18.861c-25.153-25.152-25.153-66.077,0-91.23c12.162-12.162,28.363-18.861,45.616-18.861s33.452,6.699,45.616,18.86C318.004,244.406,318.004,285.331,292.851,310.484z"/>
+          </svg>
+          <span class="text-sm font-semibold text-warm-text dark:text-neutral-300">
+            {lang === 'es' ? 'Guitarra' : 'Guitar'}
+          </span>
+        </div>
+
+        <!-- Instrument card: Piano -->
+        <div class="bg-warm-card dark:bg-neutral-900 border border-warm-border dark:border-neutral-800 rounded-2xl p-6 flex flex-col items-center gap-3 hover:border-brand-green dark:hover:border-brand-green hover:shadow-lg transition-all duration-300">
+          <svg width="40" height="40" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect x="2" y="6" width="20" height="14" rx="2" stroke="#1A7A4A" stroke-width="1.5" fill="none"/>
+            <line x1="7"  y1="6" x2="7"  y2="14" stroke="#1A7A4A" stroke-width="1.5"/>
+            <line x1="12" y1="6" x2="12" y2="14" stroke="#1A7A4A" stroke-width="1.5"/>
+            <line x1="17" y1="6" x2="17" y2="14" stroke="#1A7A4A" stroke-width="1.5"/>
+            <rect x="5"  y="6" width="3" height="8" rx="1" fill="#1A7A4A" opacity="0.6"/>
+            <rect x="10" y="6" width="3" height="8" rx="1" fill="#1A7A4A" opacity="0.6"/>
+            <rect x="15" y="6" width="3" height="8" rx="1" fill="#1A7A4A" opacity="0.6"/>
+          </svg>
+          <span class="text-sm font-semibold text-warm-text dark:text-neutral-300">
+            {lang === 'es' ? 'Piano / Teclado' : 'Piano / Keyboard'}
+          </span>
+          <span class="text-xs text-warm-muted dark:text-neutral-500 text-center leading-snug">
+            {lang === 'es' ? 'Solo portátiles · no pianos de cola' : 'Portable only · no grand pianos'}
+          </span>
+        </div>
+
+        <!-- Instrument card: Drums -->
+        <div class="bg-warm-card dark:bg-neutral-900 border border-warm-border dark:border-neutral-800 rounded-2xl p-6 flex flex-col items-center gap-3 hover:border-brand-gold dark:hover:border-brand-gold hover:shadow-lg transition-all duration-300">
+          <svg width="40" height="40" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <ellipse cx="12" cy="9" rx="9" ry="4" stroke="#E8B84B" stroke-width="1.5" fill="none"/>
+            <path d="M3 9 L3 17 C3 19.2 7 21 12 21 C17 21 21 19.2 21 17 L21 9" stroke="#E8B84B" stroke-width="1.5" fill="none"/>
+            <line x1="8"  y1="4" x2="6"  y2="1" stroke="#E8B84B" stroke-width="1.5" stroke-linecap="round"/>
+            <line x1="16" y1="4" x2="18" y2="1" stroke="#E8B84B" stroke-width="1.5" stroke-linecap="round"/>
+          </svg>
+          <span class="text-sm font-semibold text-warm-text dark:text-neutral-300">
+            {lang === 'es' ? 'Percusión' : 'Drums'}
+          </span>
+        </div>
+
+        <!-- Instrument card: Wind -->
+        <div class="bg-warm-card dark:bg-neutral-900 border border-warm-border dark:border-neutral-800 rounded-2xl p-6 flex flex-col items-center gap-3 hover:border-brand-red dark:hover:border-brand-red hover:shadow-lg transition-all duration-300">
+          <svg fill="#D94F3D" width="40" height="40" viewBox="0 0 511.998 511.998" xmlns="http://www.w3.org/2000/svg">
+            <path d="M391.266,190.918c-0.941-4.094-5.023-6.646-9.115-5.707c-6.981,1.605-14.264,2.961-21.644,4.031c-4.156,0.602-7.256,4.498-6.434,8.617c1.454,7.276,8.247,6.488,8.617,6.434c7.789-1.129,15.484-2.563,22.869-4.26C389.652,199.091,392.207,195.011,391.266,190.918z"/>
+            <path d="M505.332,159.535c-6.599-21.376-15.903-25.864-22.546-25.864c-6.161,0-12.729,6.394-12.793,6.459c0,0-19.628,22.908-63.274,38.053c-3.968,1.377-6.068,5.709-4.691,9.676c1.376,3.967,5.721,6.1,9.676,4.691c49.096-17.493,70.768-42.963,71.48-43.405c4.243,2.873,13.608,23.792,13.608,62.13c0,39.4-9.89,60.402-13.949,62.328c-0.444-0.243-50-58.274-168.884-58.589c-0.085,0-22.547-0.011-22.547-0.011v-7.373h23.175c7.265,0,14.508-0.215,21.527-0.638c4.191-0.253,7.385-3.856,7.133-8.048s-3.856-7.391-8.048-7.133c-6.716,0.405-13.651,0.61-20.612,0.61h-23.175c0,0,0.242-19.731-15.208-22.45v-8.772h3.211c4.199,0,7.604-3.405,7.604-7.604c0-4.199-3.405-7.604-7.604-7.604h-21.629c-4.199,0-7.604,3.405-7.604,7.604c0,4.199,3.405,7.604,7.604,7.604h3.211v8.771c-6.564,2.328-11.752,7.58-13.995,14.183c-2.245-6.603-7.432-11.855-13.996-14.183v-8.771h3.211c4.199,0,7.604-3.405,7.604-7.604c0-4.199-3.405-7.604-7.604-7.604h-21.629c-4.199,0-7.604,3.405-7.604,7.604c0,4.199,3.405,7.604,7.604,7.604h3.21v8.772c-6.564,2.328-11.752,7.58-13.995,14.183c-2.245-6.603-7.432-11.854-13.995-14.183v-8.94h3.211c4.199,0,7.604-3.405,7.604-7.604s-3.405-7.604-7.604-7.604h-21.629c-4.199,0-7.604,3.405-7.604,7.604s3.405,7.604,7.604,7.604h3.211v8.94c-8.85,3.139-15.208,11.59-15.208,21.504v0.946c-24.933,0.003-46.163,7.793-61.699,22.582H51.262c-1.539-3.249-4.565-5.692-8.293-6.379l-29.417-5.419c-3.32-0.608-6.832,0.311-9.419,2.467C1.507,207.859,0,211.073,0,214.492v36.769c0,3.418,1.396,6.771,4.129,8.816c4.488,3.357,8.738,2.595,9.423,2.47l29.415-5.419c3.535-0.651,6.433-2.886,8.037-5.885l25.325-0.055c-3.791,13.386-3.726,24.69-3.58,28.292c0.051,10.45,1.881,20.13,5.218,28.862c2.341,6.125,8.943,4.661,9.855,4.304c3.909-1.533,5.837-5.945,4.304-9.855c-2.738-6.985-4.142-14.895-4.169-23.511l-0.007-0.309c-0.136-3.085-0.788-30.715,17.784-50.49c12.989-13.83,31.04-20.844,53.655-20.846v7.374h-0.138c-20.093,0-36.71,6.331-48.055,18.308c-17.168,18.124-16.014,44.33-15.951,45.521l0.005,0.079l-0.001,0.099c0,22.455,10.216,38.464,30.362,47.584c15.757,7.133,33.492,7.317,33.779,7.336v7.226c0,0-19.036-0.087-36.109-7.616c-8.175-3.605-15.046-8.287-20.423-13.917c-2.901-3.038-7.714-3.147-10.751-0.246c-3.038,2.901-3.147,7.714-0.247,10.751c6.765,7.082,15.315,12.814,25.284,17.328c21.924,9.927,42.267,8.91,42.267,8.91c0.451,12.184,10.497,21.958,22.791,21.958c10.018,0,18.541-6.494,21.599-15.491c3.058,8.997,11.582,15.491,21.599,15.491c10.017,0,18.541-6.494,21.599-15.491c3.058,8.997,11.582,15.491,21.599,15.491c12.292,0,22.338-9.774,22.791-21.958h21.308c38.683,0,70.153-31.47,70.153-70.153c0-36.975-22.18-51.723-23.042-52.523c32.565,4.917,56.702,14.218,72.835,22.429c24.126,12.278,35.889,24.725,36.942,25.87c1.311,1.592,6.205,6.893,13.198,6.893c6.643,0,15.947-4.487,22.546-25.864c4.3-13.928,6.668-32.304,6.668-51.741S509.632,173.463,505.332,159.535z M37.156,242.733l-21.948,4.043v-27.8l21.948,4.042V242.733z M82.215,235.965l-29.851,0.065v-5.818h33.048C84.243,232.121,83.181,234.043,82.215,235.965z M159.389,318.63c-3.484-0.693-6.119-3.771-6.119-7.456c0-3.684,2.634-6.763,6.119-7.456V318.63z M159.389,288.416c-22.855,2.221-21.195,25.501-20.957,26.82c-2.161-0.685-43.806-12.431-21.539-64.138l42.496-0.092V288.416z M159.389,235.797l-26.543,0.058c7.259-3.743,16.086-5.643,26.406-5.643h0.137V235.797z M189.805,355.512c0,4.193-3.411,7.604-7.604,7.604c-4.193,0-7.604-3.411-7.604-7.604V191.476c0-4.193,3.411-7.604,7.604-7.604c4.193,0,7.604,3.411,7.604,7.604V355.512z M233.005,355.512c0,4.193-3.411,7.604-7.604,7.604c-4.193,0-7.604-3.411-7.604-7.604V191.476c0-4.193,3.411-7.604,7.604-7.604c4.193,0,7.604,3.411,7.604,7.604V355.512z M276.204,355.512c0,4.193-3.411,7.604-7.604,7.604s-7.604-3.411-7.604-7.604V191.476c0-4.193,3.411-7.604,7.604-7.604s7.604,3.411,7.604,7.604V355.512z M367.644,286.214c0,30.297-24.648,54.945-54.945,54.945h-21.287v-7.226c0.287-0.018,21.287-0.066,21.287-0.066c26.276,0,47.654-21.377,47.654-47.653c0-27.063-22.267-50.804-47.672-50.804l-21.27,0.051v-5.249c0,0,21.243,0.006,21.53,0.006C342.619,230.358,367.644,255.941,367.644,286.214z M291.412,288.416v-37.748l21.287-0.051c16.981,0,32.198,16.968,32.446,35.596c0.414,31.122-33.673,32.445-33.673,32.445c0.817-2.346,1.267-4.862,1.267-7.484C312.738,299.095,303.3,289.184,291.412,288.416z M297.531,311.174c0,3.684-2.634,6.763-6.119,7.456v-14.912C294.896,304.411,297.531,307.489,297.531,311.174z"/>
+            <path d="M481.689,173.015c-2.999-2.939-7.814-2.891-10.753,0.109c-11.713,11.953-32.007,19.663-43.061,23.193c-4,1.279-6.207,5.557-4.929,9.558c1.032,3.231,4.022,5.292,7.242,5.292c0.766,0,1.547-0.117,2.315-0.363c15.143-4.837,35.987-13.454,49.296-27.037C484.737,180.768,484.688,175.954,481.689,173.015z"/>
+          </svg>
+          <span class="text-sm font-semibold text-warm-text dark:text-neutral-300">
+            {lang === 'es' ? 'Vientos' : 'Wind'}
+          </span>
+        </div>
+
+        <!-- Instrument card: Ukelele -->
+<div class="bg-warm-card dark:bg-neutral-900 border border-warm-border dark:border-neutral-800 rounded-2xl p-6 flex flex-col items-center gap-3 hover:border-brand-orange dark:hover:border-brand-orange hover:shadow-lg transition-all duration-300">
+  <svg
+    width="40"
+    height="40"
+    viewBox="0 0 816.91382 774.98798"
+    xmlns="http://www.w3.org/2000/svg"
+    xmlns:xlink="http://www.w3.org/1999/xlink"
+  >
+<title
+     id="title3952">Ukulele</title>
+  <metadata
+     id="metadata8">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title>Ukulele</dc:title>
+        <dc:creator>
+          <cc:Agent>
+            <dc:title>Jordan Irwin</dc:title>
+          </cc:Agent>
+        </dc:creator>
+        <dc:subject>
+          <rdf:Bag>
+            <rdf:li>music</rdf:li>
+            <rdf:li>instrument</rdf:li>
+            <rdf:li>pluck</rdf:li>
+            <rdf:li>string</rdf:li>
+            <rdf:li>hawaii</rdf:li>
+            <rdf:li>hawaiian</rdf:li>
+          </rdf:Bag>
+        </dc:subject>
+        <cc:license
+           rdf:resource="http://creativecommons.org/licenses/publicdomain/" />
+      </cc:Work>
+      <cc:License
+         rdf:about="http://creativecommons.org/licenses/publicdomain/">
+        <cc:permits
+           rdf:resource="http://creativecommons.org/ns#Reproduction" />
+        <cc:permits
+           rdf:resource="http://creativecommons.org/ns#Distribution" />
+        <cc:permits
+           rdf:resource="http://creativecommons.org/ns#DerivativeWorks" />
+      </cc:License>
+    </rdf:RDF>
+  </metadata>
+  <defs
+     id="defs6">
+    <linearGradient
+       id="swatch14">
+      <stop
+         style="stop-color:#000000;stop-opacity:1;"
+         offset="0"
+         id="stop14" />
+    </linearGradient>
+    <linearGradient
+       id="swatch13">
+      <stop
+         style="stop-color:#000000;stop-opacity:1;"
+         offset="0"
+         id="stop13" />
+    </linearGradient>
+    <linearGradient
+       id="swatch12">
+      <stop
+         style="stop-color:#000000;stop-opacity:1;"
+         offset="0"
+         id="stop12" />
+    </linearGradient>
+    <linearGradient
+       id="swatch10">
+      <stop
+         style="stop-color:#000000;stop-opacity:1;"
+         offset="0"
+         id="stop11" />
+    </linearGradient>
+    <linearGradient
+       id="swatch6">
+      <stop
+         style="stop-color:#000000;stop-opacity:1;"
+         offset="0"
+         id="stop6" />
+    </linearGradient>
+    <linearGradient
+       id="linearGradient4012">
+      <stop
+         style="stop-color:#160501;stop-opacity:1;"
+         offset="0"
+         id="stop4014" />
+      <stop
+         style="stop-color:#160501;stop-opacity:0;"
+         offset="1"
+         id="stop4016" />
+    </linearGradient>
+    <linearGradient
+       xlink:href="#linearGradient4012"
+       id="linearGradient4018"
+       x1="108.43871"
+       y1="742.26288"
+       x2="171.74094"
+       y2="683.71289"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="rotate(47.632087,439.50907,747.36925)" />
+  </defs>
+  <g
+     id="g4468"
+     style="fill:#d45500;stroke:#d45500"
+     transform="rotate(47.632087,439.50907,747.36925)">
+    <rect
+       y="127.76992"
+       x="97.223801"
+       height="8.3193874"
+       width="31.890985"
+       id="rect4172-4"
+       style="fill:#d45500;fill-opacity:1;stroke:#d45500" />
+    <path
+       id="rect4309-7"
+       d="m 72.811716,121.79766 c 0.09039,-0.10784 0.358075,-0.22357 0.358075,-0.22357 l 13.238004,-2.4177 c 0,0 0.704631,-0.0927 1.047485,-0.009 0.342854,0.0836 0.851537,0.44499 0.851537,0.44499 l 8.930715,6.86243 -0.0074,10.51884 -8.956807,7.05916 c 0,0 -0.515617,0.3961 -0.788274,0.45964 -0.272657,0.0635 -1.00961,-0.0858 -1.00961,-0.0858 l -13.42869,-2.36505 c 0,0 -0.234621,-0.064 -0.349672,-0.20156 -0.115051,-0.13753 -0.0763,-0.3344 -0.0916,-0.50469 -0.56792,-6.32191 -1.201174,-12.81075 0.0068,-19.04211 0.03389,-0.17481 0.08505,-0.35911 0.199437,-0.49558 z"
+       style="fill:#d45500;fill-opacity:1;stroke:#d45500" />
+  </g>
+  <g
+     id="g4464"
+     style="fill:#d45500;stroke:#d45500"
+     transform="rotate(47.632087,439.50907,747.36925)">
+    <rect
+       y="55.461792"
+       x="92.321556"
+       height="8.3193874"
+       width="31.890985"
+       id="rect4172-6"
+       style="fill:#d45500;fill-opacity:1;stroke:#d45500" />
+    <path
+       id="rect4309"
+       d="m 67.968919,49.615338 c 0.09039,-0.10784 0.358075,-0.22357 0.358075,-0.22357 l 13.238004,-2.4177 c 0,0 0.704631,-0.0927 1.047485,-0.009 0.342854,0.0836 0.851537,0.44499 0.851537,0.44499 l 8.930715,6.86243 -0.0074,10.51884 -8.956807,7.05916 c 0,0 -0.515617,0.3961 -0.788274,0.45964 -0.272657,0.0635 -1.00961,-0.0858 -1.00961,-0.0858 l -13.42869,-2.36505 c 0,0 -0.234621,-0.064 -0.349672,-0.20156 -0.115051,-0.13753 -0.0763,-0.3344 -0.0916,-0.50469 -0.56792,-6.32191 -1.201174,-12.81075 0.0068,-19.04211 0.03389,-0.17481 0.08505,-0.35911 0.199437,-0.49558 z"
+       style="fill:#d45500;fill-opacity:1;stroke:#d45500" />
+  </g>
+  <g
+     id="g4460"
+     style="fill:#d45500;stroke:#d45500"
+     transform="rotate(47.632087,439.50907,747.36925)">
+    <rect
+       y="56.646587"
+       x="200.58475"
+       height="8.3193874"
+       width="31.890985"
+       id="rect4172"
+       style="fill:#d45500;fill-opacity:1;stroke:#d45500" />
+    <path
+       id="rect4309-4"
+       d="m 256.75736,50.822882 c -0.0904,-0.10784 -0.35808,-0.22357 -0.35808,-0.22357 l -13.238,-2.4177 c 0,0 -0.70463,-0.0927 -1.04749,-0.009 -0.34285,0.0836 -0.85153,0.44499 -0.85153,0.44499 l -8.93072,6.86243 0.007,10.51884 8.95681,7.05916 c 0,0 0.51562,0.3961 0.78827,0.45964 0.27266,0.0635 1.00961,-0.0858 1.00961,-0.0858 l 13.42869,-2.36505 c 0,0 0.23462,-0.064 0.34968,-0.20156 0.11505,-0.13753 0.0763,-0.3344 0.0916,-0.50469 0.56792,-6.32191 1.20117,-12.81075 -0.007,-19.04211 -0.0339,-0.17481 -0.0851,-0.35911 -0.19944,-0.49558 z"
+       style="fill:#d45500;fill-opacity:1;stroke:#d45500" />
+  </g>
+  <g
+     id="g4456"
+     style="fill:#d45500;stroke:#d45500"
+     transform="rotate(47.632087,439.50907,747.36925)">
+    <rect
+       y="127.85658"
+       x="195.75896"
+       height="8.3193874"
+       width="31.890985"
+       id="rect4172-9"
+       style="fill:#d45500;fill-opacity:1;stroke:#d45500" />
+    <path
+       id="rect4309-78"
+       d="m 251.90439,122.05764 c -0.0904,-0.10784 -0.35808,-0.22357 -0.35808,-0.22357 l -13.238,-2.4177 c 0,0 -0.70463,-0.0927 -1.04749,-0.009 -0.34285,0.0836 -0.85153,0.44499 -0.85153,0.44499 l -8.93072,6.86243 0.007,10.51884 8.95681,7.05916 c 0,0 0.51562,0.3961 0.78827,0.45964 0.27266,0.0635 1.00961,-0.0858 1.00961,-0.0858 l 13.42869,-2.36505 c 0,0 0.23462,-0.064 0.34967,-0.20156 0.11506,-0.13753 0.0763,-0.3344 0.0916,-0.50469 0.56792,-6.32191 1.20118,-12.81075 -0.007,-19.04211 -0.0339,-0.17481 -0.085,-0.35911 -0.19943,-0.49558 z"
+       style="fill:#d45500;fill-opacity:1;stroke:#d45500" />
+  </g>
+  <path
+     style="fill:none;fill-opacity:1;stroke:#d45500;stroke-width:31.9;stroke-dasharray:none"
+     d="m 358.88387,382.88834 c -42.05375,-45.16395 -111.37268,-39.52498 -143.48484,35.84416 -5.2067,11.95771 -9.13444,24.54479 -15.90404,35.56401 -5.44424,5.52606 -8.91796,10.96113 -16.56216,14.1503 -18.76036,6.38387 -29.5438,8.26354 -48.64091,10.56539 -98.358885,11.57155 -174.677745,122.65932 -64.067325,232.09176 104.558685,124.3434 215.348405,49.415 236.968175,-52.55189 0.0511,-11.27703 6.41173,-24.98686 11.2865,-38.88635 2.10466,-5.47414 6.7285,-9.55206 12.63078,-12.92143 12.5889,-10.93711 24.16066,-7.94768 31.91894,-12.02003 77.18835,-17.97945 106.90797,-94.11013 56.5151,-145.59568"
+     id="path3594" />
+  <ellipse
+     style="fill:#2b1100;fill-opacity:1;fill-rule:nonzero;stroke:#d45500;stroke-opacity:1"
+     id="path2818"
+     transform="rotate(47.432087)"
+     cx="569.47418"
+     cy="139.21478"
+     rx="47.487793"
+     ry="50.068649" />
+  <path
+     style="fill:#803300;fill-opacity:1;stroke:#d45500"
+     d="m 346.30054,395.34547 c -2.56411,10.11547 6.03699,14.81695 16.22937,18.74681 4.40694,14.5248 13.78734,23.18653 25.34724,29.27898 3.01701,8.20646 5.05611,17.31113 15.88176,18.34524 l 11.05164,-11.31798 -58.33464,-63.84207 -10.17536,8.789 z"
+     id="path3592-7" />
+  <path
+     style="fill:none;fill-opacity:1;stroke:#d45500;stroke-width:21.3;stroke-dasharray:none"
+     d="m 347.16964,394.55041 c -2.5641,10.11547 6.03699,14.81694 16.22937,18.74681 4.40694,14.5248 13.78735,23.18653 25.34724,29.27897 3.01702,8.20647 5.05611,17.31113 15.88177,18.34524 L 675.22305,205.3674 626.68823,152.52682 Z"
+     id="path3592" />
+  <g
+     id="g4432"
+     transform="rotate(47.632087,437.5626,757.91202)"
+     style="fill:#aa4400;stroke:#d45500">
+    <path
+       id="path3596-3"
+       d="m 82.256871,883.07171 0.136944,31.11846 c 0,0 10.505765,-2.48324 14.120747,-1.97968 3.614978,0.50355 4.985348,4.16864 4.985348,4.16864 l 100.68146,-0.27375 c 0,0 1.31659,-3.63198 5.44414,-4.16257 4.12754,-0.53058 14.16125,1.51325 14.16125,1.51325 l -0.13667,-31.04768 -138.333159,0.48288 -1.060056,0.18045 z"
+       style="fill:#aa4400;fill-opacity:1;stroke:#d45500" />
+    <path
+       id="path3596"
+       d="m 82.221469,882.06298 0.136944,31.11846 c 0,0 10.505765,-2.48324 14.120747,-1.97968 3.61498,0.50355 4.98535,4.16864 4.98535,4.16864 l 100.68146,-0.27375 c 0,0 1.31659,-3.63198 5.44414,-4.16257 4.12754,-0.53058 14.16125,1.51325 14.16125,1.51325 l -0.13667,-31.04768 -138.333161,0.48288 -1.060056,0.18045 z"
+       style="fill:#aa4400;fill-opacity:1;stroke:#d45500" />
+  </g>
+  <path
+     style="fill:none;fill-opacity:1;stroke:#d45500"
+     d="m 629.22774,148.365 c 11.08661,-12.27228 17.49099,-23.08793 17.82102,-34.01152 L 751.07701,13.195146 c 2.08508,0.0223 2.07319,0.004 2.08828,-0.0367 9.41342,14.97202 32.51993,23.80885 51.17732,27.50592 0.47775,17.34643 7.35194,35.33711 21.10789,53.50225 L 713.04216,186.20141 c -11.65981,-0.71482 -23.98621,5.6224 -35.71197,15.0617 l -50.72042,-48.61857 c 0.45396,-1.37584 1.4071,-2.79866 2.61797,-4.27959 z"
+     id="path3600-1" />
+  <path
+     style="fill:none;fill-opacity:0.980392;stroke:#d45500;stroke-width:18.9;stroke-dasharray:none"
+     d="m 631.39435,148.39904 c 11.08662,-12.27229 17.49099,-23.08794 17.82102,-34.01152 L 753.24362,13.229176 c 15.84291,15.63714 32.02213,23.25976 53.2656,27.46928 0.47775,17.34643 7.35193,35.3371 21.10789,53.50224 L 715.20877,186.23549 c -11.65981,-0.71481 -23.9862,5.6224 -35.71197,15.06171 z"
+     id="path3600" />
+  <path
+     style="fill:none;fill-opacity:1;stroke:none"
+     d="m 649.23596,114.32181 c 105.63271,-76.968394 144.43833,-2.60789 66.03476,71.93661 -13.5104,-0.76468 -26.28572,7.49543 -35.27074,14.75672 l -48.23712,-52.99758 c 7.99835,-9.3019 17.11286,-20.60624 17.47312,-33.69576 z"
+     id="path2883" />
+  <path
+     style="fill:#2b1100;fill-opacity:1;stroke:#d45500"
+     d="m 626.67958,152.60926 5.33918,-4.86967 48.34627,52.98949 -5.33045,4.87665 -48.3554,-52.99697 -2e-5,-3e-5 z"
+     id="path3598" />
+  <path
+     style="fill:none;stroke:#d45500;stroke-width:1px;stroke-linecap:round;stroke-linejoin:miter;stroke-opacity:1"
+     d="m 600.60865,179.08325 46.79338,50.93579 v 0"
+     id="path3642" />
+  <path
+     style="fill:none;stroke:#d45500;stroke-width:1px;stroke-linecap:round;stroke-linejoin:miter;stroke-opacity:1"
+     d="m 572.67886,202.54325 48.40095,52.68597"
+     id="path3652" />
+  <path
+     style="fill:none;stroke:#d45500;stroke-width:1px;stroke-linecap:round;stroke-linejoin:miter;stroke-opacity:1"
+     d="m 546.03426,224.2445 50.27144,54.73128"
+     id="path3662" />
+  <path
+     style="fill:none;stroke:#d45500;stroke-width:1px;stroke-linecap:round;stroke-linejoin:miter;stroke-opacity:1"
+     d="M 521.78493,245.33307 573.0214,301.1061"
+     id="path3672" />
+  <path
+     style="fill:none;stroke:#d45500;stroke-width:1px;stroke-linecap:round;stroke-linejoin:miter;stroke-opacity:1"
+     d="m 499.01377,264.78518 52.21251,56.83567"
+     id="path3674" />
+  <path
+     style="fill:none;stroke:#d45500;stroke-width:1px;stroke-linecap:round;stroke-linejoin:miter;stroke-opacity:1"
+     d="m 476.47766,284.21497 53.08767,57.79733"
+     id="path3676" />
+  <path
+     style="fill:none;stroke:#d45500;stroke-width:1px;stroke-linecap:round;stroke-linejoin:miter;stroke-opacity:1"
+     d="m 455.96173,302.07571 54.07142,58.86835"
+     id="path3678" />
+  <path
+     style="fill:none;stroke:#d45500;stroke-width:1px;stroke-linecap:round;stroke-linejoin:miter;stroke-opacity:1"
+     d="m 436.2593,318.9337 54.93557,59.80918"
+     id="path3680" />
+  <path
+     style="fill:none;stroke:#d45500;stroke-width:1px;stroke-linecap:round;stroke-linejoin:miter;stroke-opacity:1"
+     d="m 418.5362,334.70929 55.18632,60.08219"
+     id="path3682" />
+  <path
+     style="fill:none;stroke:#d45500;stroke-width:1px;stroke-linecap:round;stroke-linejoin:miter;stroke-opacity:1"
+     d="m 400.9765,349.58366 56.05819,61.03141"
+     id="path3684" />
+  <path
+     style="fill:none;stroke:#d45500;stroke-width:1px;stroke-linecap:round;stroke-linejoin:miter;stroke-opacity:1"
+     d="m 384.35114,364.1264 56.54428,61.56062"
+     id="path3686" />
+  <path
+     style="fill:none;stroke:#d45500;stroke-width:1px;stroke-linecap:round;stroke-linejoin:miter;stroke-opacity:1"
+     d="m 368.94251,377.29602 57.15767,62.22842"
+     id="path3688" />
+  <path
+     style="fill:none;stroke:#d45500;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+     d="m 685.44073,111.36731 -49.16966,41.26887"
+     id="path3850" />
+  <ellipse
+     style="fill:#999999;fill-opacity:1;stroke:#d45500"
+     id="path4040"
+     cx="547.59265"
+     cy="-436.74051"
+     rx="9.7059526"
+     ry="10.139254"
+     transform="rotate(47.632087)" />
+  <path
+     style="fill:url(#linearGradient4018);fill-opacity:1;stroke:none"
+     d="m 269.69594,467.88306 c 46.07801,40.84646 21.24204,66.19134 -26.62339,75.46054 -21.04459,-32.96367 -0.12212,-66.47001 26.62339,-75.46054 z"
+     id="path3994" />
+  <path
+     style="fill:none;stroke:#d45500;stroke-width:1.8;stroke-linecap:butt;stroke-linejoin:miter;stroke-dasharray:none;stroke-opacity:1"
+     d="m 636.39568,152.52471 -525.61617,463.85791 0.38001,-0.34932"
+     id="path3602" />
+  <path
+     style="fill:none;stroke:#d45500;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+     d="M 747.40035,54.456516 649.866,167.49752"
+     id="path3858" />
+  <ellipse
+     style="fill:#999999;fill-opacity:1;stroke:#d45500"
+     id="path4040-14"
+     cx="542.82892"
+     cy="-508.69574"
+     rx="9.7059526"
+     ry="10.139254"
+     transform="rotate(47.632087)" />
+  <path
+     style="fill:none;stroke:#d45500;stroke-width:1.8;stroke-linecap:butt;stroke-linejoin:miter;stroke-dasharray:none;stroke-opacity:1"
+     d="M 128.23808,635.39002 649.96397,167.39552"
+     id="path3604" />
+  <path
+     style="fill:none;stroke:#d45500;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+     d="m 729.18796,144.96695 -54.29568,52.84487"
+     id="path3852" />
+  <ellipse
+     style="fill:#999999;fill-opacity:1;stroke:#d45500"
+     id="path4040-1"
+     cx="595.10797"
+     cy="-436.60373"
+     rx="9.7059526"
+     ry="10.139254"
+     transform="rotate(47.632087)" />
+  <path
+     style="fill:none;stroke:#d45500;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+     d="M 663.02136,182.75144 785.65614,93.408396"
+     id="path3856" />
+  <ellipse
+     style="fill:#999999;fill-opacity:1;stroke:#d45500"
+     id="path4040-8"
+     cx="599.77155"
+     cy="-507.96039"
+     rx="9.7059526"
+     ry="10.139254"
+     transform="rotate(47.632087)" />
+  <path
+     style="fill:none;stroke:#d45500;stroke-width:1.8;stroke-linecap:butt;stroke-linejoin:miter;stroke-dasharray:none;stroke-opacity:1"
+     d="M 663.25901,182.56124 144.90538,655.82509"
+     id="path3606" />
+  <path
+     style="fill:none;stroke:#d45500;stroke-width:1.8;stroke-linecap:butt;stroke-linejoin:miter;stroke-dasharray:none;stroke-opacity:1"
+     d="M 161.98379,675.18165 676.37247,196.39913"
+     id="path3608" />
+  <ellipse
+     style="fill:#b3b3b3;fill-opacity:1;fill-rule:nonzero;stroke:#d45500"
+     id="path3764"
+     transform="rotate(47.432087)"
+     cx="571.51801"
+     cy="-145.14874"
+     rx="4.4711089"
+     ry="4.562356" />
+  <ellipse
+     transform="rotate(47.432087)"
+     style="fill:#b3b3b3;fill-opacity:1;fill-rule:nonzero;stroke:#d45500"
+     id="path3764-5"
+     cx="571.60925"
+     cy="-70.326103"
+     rx="4.4711089"
+     ry="4.562356" />
+  <ellipse
+     transform="rotate(47.432087)"
+     style="fill:#b3b3b3;fill-opacity:1;fill-rule:nonzero;stroke:#d45500"
+     id="path3764-2"
+     cx="571.97424"
+     cy="-203.54688"
+     rx="4.4711089"
+     ry="4.562356" />
+  <ellipse
+     transform="rotate(47.432087)"
+     style="fill:#b3b3b3;fill-opacity:1;fill-rule:nonzero;stroke:#d45500"
+     id="path3764-8"
+     cx="572.70422"
+     cy="-266.87238"
+     rx="4.4711089"
+     ry="4.562356" />
+  <path
+     style="fill:#2b1100;fill-opacity:1;stroke:#d45500"
+     d="m 108.33075,610.07383 60.75343,66.60837 c -0.65777,2.93162 -2.43281,4.63732 -5.45538,4.97587 l -60.75342,-66.6084 c 0.63457,-3.28643 2.75275,-4.53294 5.45537,-4.97584 z"
+     id="rect2891" />  </svg>
+  <span class="text-sm font-semibold text-warm-text dark:text-neutral-300">
+    {lang === 'es' ? 'Ukelele' : 'Ukulele'}
+  </span>
+</div>
+
+       <!-- Instrument card: Banjo -->
+<div class="bg-warm-card dark:bg-neutral-900 border border-warm-border dark:border-neutral-800 rounded-2xl p-6 flex flex-col items-center gap-3 hover:border-brand-green dark:hover:border-brand-green hover:shadow-lg transition-all duration-300">
+  <svg
+    width="40"
+    height="40"
+    viewBox="0 0 313.994 313.994"
+    fill="#1A7A4A"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <path d="M305.543,49.056l4.167-3.453c0.169-0.14,0.33-0.287,0.485-0.442c5.065-5.067,5.064-13.313-0.002-18.379L287.216,3.804
+      c-2.455-2.452-5.718-3.802-9.186-3.802c-3.471,0-6.733,1.351-9.188,3.803c-0.155,0.155-0.303,0.317-0.443,0.486l-3.454,4.169
+      l-2.803-2.804c-2.733-2.732-7.164-2.733-9.899-0.001c-2.734,2.733-2.734,7.165-0.001,9.899l3.732,3.732l-2.55,3.077l-3.553-3.551
+      c-2.733-2.733-7.166-2.732-9.899,0.003c-2.732,2.734-2.731,7.166,0.003,9.899l4.479,4.476l-2.873,3.468
+      c-2.12,2.236-3.44,5.067-3.729,8.015c-0.126,1.285-0.044,2.552,0.22,3.761L122.894,163.606c-12.507-7.581-26.88-11.637-41.88-11.637
+      c-21.64,0-41.984,8.428-57.285,23.729C8.427,190.999,0,211.343,0,232.981c0,21.639,8.427,41.981,23.729,57.283
+      c15.302,15.301,35.646,23.728,57.286,23.728c21.639,0,41.982-8.427,57.282-23.727c15.303-15.302,23.73-35.646,23.729-57.285
+      c0-14.999-4.056-29.371-11.637-41.877L265.57,75.928c0.823,0.179,1.672,0.279,2.542,0.279c3.34,0,6.681-1.375,9.227-3.785
+      l3.468-2.873l4.478,4.477c1.367,1.366,3.159,2.05,4.95,2.05c1.791,0,3.583-0.684,4.95-2.05c2.733-2.734,2.733-7.166,0-9.9
+      l-3.548-3.549l3.077-2.549l3.73,3.73c1.367,1.366,3.159,2.05,4.95,2.05c1.791,0,3.583-0.684,4.95-2.05
+      c2.733-2.734,2.733-7.166,0-9.9L305.543,49.056z M278.117,14.504l21.379,21.38L268.468,61.59l-16.059-16.059L278.117,14.504z
+       M148.026,232.98c0,17.899-6.971,34.727-19.629,47.386c-12.655,12.656-29.483,19.626-47.383,19.626
+      c-17.9,0-34.73-6.971-47.388-19.628C20.97,267.708,14,250.88,14,232.981c0-17.899,6.97-34.727,19.628-47.383
+      c12.657-12.658,29.485-19.629,47.386-19.629c11.216,0,22.01,2.738,31.621,7.896l-49.77,49.767l-5.321-5.321
+      c-2.734-2.732-7.166-2.732-9.9,0c-2.733,2.734-2.733,7.166,0,9.9l5.321,5.321l-9.623,9.622c-2.734,2.734-2.734,7.166-0.001,9.899
+      c1.367,1.367,3.158,2.051,4.95,2.051c1.791,0,3.583-0.684,4.949-2.05l9.624-9.623l7.697,7.697l-9.622,9.622
+      c-2.734,2.734-2.734,7.166-0.001,9.899c1.367,1.367,3.158,2.051,4.95,2.051c1.791,0,3.583-0.684,4.949-2.05l9.623-9.623l5.321,5.321
+      c1.367,1.366,3.159,2.05,4.95,2.05c1.791,0,3.583-0.684,4.95-2.05c2.733-2.734,2.733-7.166,0-9.9l-5.321-5.321l49.77-49.767
+      C145.288,210.973,148.026,221.766,148.026,232.98z M128.398,185.598c1.293,1.293,2.51,2.639,3.683,4.016l-51.619,51.616
+      l-7.697-7.697l51.619-51.617C125.76,183.088,127.105,184.306,128.398,185.598z M138.298,175.698c-1.291-1.291-2.63-2.515-3.99-3.706
+      l112.384-112.38l7.697,7.697l-112.384,112.38C140.813,178.329,139.589,176.989,138.298,175.698z"/>
+  </svg>
+  <span class="text-sm font-semibold text-warm-text dark:text-neutral-300">
+    {lang === 'es' ? 'Banjo' : 'Banjo'}
+  </span>
+</div>
+
+        <!-- Wide card: Any instrument -->
+        <div class="col-span-2 bg-brand-orange/5 dark:bg-brand-orange/10 border border-brand-orange/20 dark:border-brand-orange/30 rounded-2xl p-5 flex items-center gap-4">
+          <div class="w-10 h-10 rounded-xl bg-brand-orange/15 flex items-center justify-center shrink-0">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#C85A1A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="16"/><line x1="8" y1="12" x2="16" y2="12"/>
+            </svg>
+          </div>
+          <p class="text-sm text-warm-muted dark:text-neutral-400 leading-snug">
+            <span class="font-semibold text-brand-orange">
+              {lang === 'es' ? '¿Tienes otro instrumento?' : 'Have a different instrument?'}
+            </span>
+            <br/>
+            {lang === 'es'
+              ? 'Aceptamos todo tipo de instrumentos en buen estado.'
+              : 'We accept all types of instruments in good condition.'}
+          </p>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+
+</section>

@@ -1,0 +1,165 @@
+media:
+  # Gallery photos live INSIDE src/content/gallery/, co-located with their
+  # JSON entries, because the gallery schema uses Astro's image() helper.
+  # That helper requires a relative path like "./photo.jpg" in the JSON.
+  # output: "." asks Pages CMS to write that relative form. VERIFY THIS
+  # with a real upload before relying on it (see setup notes).
+  - name: gallery-media
+    label: "Gallery photos"
+    input: src/content/gallery
+    output: .
+    categories: [image]
+
+  # Past-event photos live in public/, served at /images/past-events/<file>.
+  # The markdown "image" field stores the filename only; the page template
+  # adds the "/images/past-events/" prefix itself.
+  - name: past-events-media
+    label: "Past event photos"
+    input: public/images/past-events
+    output: /images/past-events
+    categories: [image]
+
+  # Same pattern as past-events, for the (optional) upcoming-event photo.
+  - name: events-media
+    label: "Event photos"
+    input: public/images/events
+    output: /images/events
+    categories: [image]
+
+content:
+  - name: events
+    label: "Upcoming Events"
+    type: collection
+    path: src/content/events
+    format: json
+    view:
+      fields: [title_es, date, featured]
+    fields:
+      - name: title_es
+        label: "Title (Spanish)"
+        type: string
+      - name: title_en
+        label: "Title (English)"
+        type: string
+      - name: date
+        label: "Date"
+        type: date
+        options:
+          format: "yyyy-MM-dd"
+      - name: time
+        label: "Time"
+        description: "Free text, e.g. \"7:30 PM\""
+        type: string
+      - name: location_es
+        label: "Location (Spanish)"
+        type: string
+      - name: location_en
+        label: "Location (English)"
+        type: string
+      - name: description_es
+        label: "Description (Spanish)"
+        type: text
+      - name: description_en
+        label: "Description (English)"
+        type: text
+      - name: image
+        label: "Photo (optional)"
+        type: image
+        required: false
+        options:
+          media: events-media
+      - name: featured
+        label: "Featured"
+        description: "Show this event with extra emphasis"
+        type: boolean
+        default: false
+
+  - name: gallery
+    label: "Gallery"
+    type: collection
+    path: src/content/gallery
+    format: json
+    view:
+      fields: [title_es, image, order, featured]
+    fields:
+      - name: title_es
+        label: "Title (Spanish)"
+        type: string
+      - name: title_en
+        label: "Title (English)"
+        type: string
+      - name: image
+        label: "Photo"
+        description: "Required — every gallery entry needs a photo"
+        type: image
+        required: true
+        options:
+          media: gallery-media
+      - name: alt_es
+        label: "Alt text (Spanish)"
+        description: "Describes the photo for screen readers"
+        type: string
+      - name: alt_en
+        label: "Alt text (English)"
+        description: "Describes the photo for screen readers"
+        type: string
+      - name: date
+        label: "Date (optional)"
+        type: date
+        required: false
+        options:
+          format: "yyyy-MM-dd"
+      - name: featured
+        label: "Featured"
+        type: boolean
+        default: false
+      - name: order
+        label: "Sort order"
+        description: "Lower numbers appear first"
+        type: number
+        default: 99
+
+  - name: past-events
+    label: "Past Events"
+    type: collection
+    path: src/content/past-events
+    format: yaml-frontmatter
+    view:
+      fields: [title_es, date, location_es]
+    fields:
+      - name: title_es
+        label: "Title (Spanish)"
+        type: string
+      - name: title_en
+        label: "Title (English)"
+        type: string
+      - name: date
+        label: "Date"
+        type: date
+        options:
+          format: "yyyy-MM-dd"
+      - name: location_es
+        label: "Location (Spanish)"
+        type: string
+      - name: location_en
+        label: "Location (English)"
+        type: string
+      - name: image
+        label: "Photo (optional)"
+        type: image
+        required: false
+        options:
+          media: past-events-media
+      - name: image_alt_es
+        label: "Photo alt text (Spanish, optional)"
+        type: string
+        required: false
+      - name: image_alt_en
+        label: "Photo alt text (English, optional)"
+        type: string
+        required: false
+      - name: body
+        label: "Story"
+        type: rich-text
+        options:
+          media: false
