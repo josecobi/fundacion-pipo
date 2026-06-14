@@ -4,6 +4,7 @@
     "donate": "Donar",
     "events": "Eventos",
     "past_events": "Historia",
+    "calipso": "Calipso",
     "gallery": "Galería",
     "contact": "Contacto"
   },
@@ -63,6 +64,12 @@
   "historia": {
     "title": "¿Quién fue Pipo Navarro?",
     "subtitle": "Trompetista, maestro y compositor panameño (1921–1981)"
+  },
+  "calipso": {
+    "eyebrow": "Fundación Pipo Navarro · 22 de mayo de 2024",
+    "title": "Homenaje al Calipso",
+    "subtitle": "Exposición sobre la Ley que declara el 17 de octubre de cada año como Día del Calipso y Calipsonian panameño",
+    "book_caption": "El Calipso, ayer, hoy y mañana — Gerardo Maloney Francis e Ian Isidore Smart"
   },
   "footer": {
     "tagline": "Preservando el legado musical de Panamá.",

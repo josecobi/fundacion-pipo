@@ -1,0 +1,107 @@
+---
+import { getLangFromUrl, useTranslations } from '../i18n/utils';
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+
+const paragraphs = [
+  {
+    es: 'La llegada masiva de afroantillanos procedentes de Trinidad & Tobago y Barbados durante la construcción del Canal de Panamá introdujo el género musical caribeño conocido como Calipso en nuestro país, el cual se desarrolló principalmente en las provincias de Bocas del Toro y Colón.',
+    en: 'The massive arrival of Afro-Antilleans from Trinidad & Tobago and Barbados during the construction of the Panama Canal introduced the Caribbean musical genre known as Calypso to our country, which developed mainly in the provinces of Bocas del Toro and Colón.',
+  },
+  {
+    es: 'Con el transcurrir de los años, valiosos intérpretes, exponentes y grupos musicales lo convirtieron en el género musical más popular de las décadas del 60 al 70. Aún recordamos algunos de sus más destacados exponentes: Wilfred Methusiel Berry Gonin, mejor conocido como Lord Cobra, precisamente nacido en Isla Bastimentos, provincia de Bocas del Toro; Pedrito Altamiranda, recientemente fallecido; Sir Valentino, Black Majesty y grupos musicales como Descendant Calipso Band, Grupo Amistad, The Beachers y muchos otros.',
+    en: 'Over the years, valuable performers, exponents, and musical groups turned it into the most popular musical genre of the 1960s and 70s. We still remember some of its most outstanding exponents: Wilfred Methusiel Berry Gonin, better known as Lord Cobra, born precisely on Isla Bastimentos, province of Bocas del Toro; Pedrito Altamiranda, who recently passed away; Sir Valentino, Black Majesty, and musical groups such as Descendant Calipso Band, Grupo Amistad, The Beachers, and many others.',
+  },
+  {
+    es: 'Este legado musical, artístico e histórico, motivó a la Fundación Pipo Navarro y al Centro de Estudios Afro panameños (CEDEAP) a presentar ante la Asamblea Nacional el proyecto de Ley 926 del 2022 que luego pasara a ser la Ley 426 del 26 de febrero del 2024 por medio de la cual se declara el 17 de octubre de cada año como Día del Calipso y Calipsonian panameño.',
+    en: 'This musical, artistic, and historical legacy motivated the Pipo Navarro Foundation and the Center for Afro-Panamanian Studies (CEDEAP) to present Bill 926 of 2022 to the National Assembly, which later became Law 426 of February 26, 2024, declaring October 17 of each year as the Day of Panamanian Calypso and Calypsonians.',
+  },
+  {
+    es: 'Esta Ley le rinde homenaje al ilustre panameño Wilfred Methusiel Berry Gonin, conocido como Lord Cobra, rey del calipso y honra a aquellas personas que se dedican a interpretar el calipso panameño. La Ley también contempla el diseño, construcción y conservación de un monumento dedicado a la memoria de los grandes músicos y calipsonians panameños, íconos del desarrollo de este género musical y que han contribuido a nuestra identidad y reconocimiento panameño.',
+    en: 'This Law pays tribute to the illustrious Panamanian Wilfred Methusiel Berry Gonin, known as Lord Cobra, king of calypso, and honors those who devote themselves to performing Panamanian calypso. The Law also provides for the design, construction, and preservation of a monument dedicated to the memory of the great Panamanian musicians and calypsonians, icons of the development of this musical genre who have contributed to our Panamanian identity and recognition.',
+  },
+  {
+    es: 'El Estado, a través del Ministerio de Cultura y la Secretaría Nacional de Políticas y Desarrollo para los Afro panameños, gestionará y aportará los recursos económicos para la obra y de común acuerdo con el Foro Afro panameño y otras organizaciones del Movimiento Social Afro panameño, así como las autoridades municipales y locales correspondientes, se encargarán de seleccionar el lugar más adecuado para la exhibición de este monumento dentro de la ciudad de Panamá.',
+    en: 'The State, through the Ministry of Culture and the National Secretariat of Policies and Development for Afro-Panamanians, will manage and provide the financial resources for the monument, and in agreement with the Afro-Panamanian Forum and other organizations of the Afro-Panamanian Social Movement, as well as the relevant municipal and local authorities, will be responsible for selecting the most suitable location for displaying this monument within Panama City.',
+  },
+  {
+    es: 'En buena hora, dentro del marco del mes de la Etnia Negra, damos inicio a una serie de eventos alusivos al Día del Calipso y Calipsonian panameño, actividades que se realizarán de la mano con el Gobierno nacional, a través del Ministerio de Cultura, el Ministerio de Educación, los municipios y otras entidades públicas.',
+    en: 'In good time, within the framework of Black Ethnicity Month, we are launching a series of events related to the Day of Panamanian Calypso and Calypsonians, activities that will be carried out together with the national government, through the Ministry of Culture, the Ministry of Education, the municipalities, and other public entities.',
+  },
+  {
+    es: 'Aprovechamos la oportunidad para agradecerle al Departamento de Danza de la Facultad de Bellas Artes de la Universidad de Panamá, la invitación a esta actividad y esperamos contar siempre con Uds., en esa tarea de estimular, valorar, preservar y promocionar este género musical único de Panamá.',
+    en: 'We take this opportunity to thank the Dance Department of the Faculty of Fine Arts of the University of Panama for the invitation to this event, and we hope to always count on you in the task of encouraging, valuing, preserving, and promoting this unique musical genre of Panama.',
+  },
+];
+---
+
+<section id="calipso" class="relative py-28 bg-neutral-50 dark:bg-neutral-900/50 overflow-hidden">
+
+  <!-- BACKGROUND DECORATION -->
+  <div class="absolute inset-0 pointer-events-none select-none" aria-hidden="true">
+    <svg class="absolute top-16 right-10 w-[120px] opacity-[0.05] dark:opacity-[0.07]" viewBox="0 0 120 140" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <line x1="30" y1="10" x2="30" y2="100" stroke="#E8B84B" stroke-width="4" stroke-linecap="round"/>
+      <line x1="80" y1="10" x2="80" y2="90"  stroke="#E8B84B" stroke-width="4" stroke-linecap="round"/>
+      <line x1="30" y1="10" x2="80" y2="10"  stroke="#E8B84B" stroke-width="4" stroke-linecap="round"/>
+      <ellipse cx="18" cy="102" rx="14" ry="9" fill="#E8B84B" transform="rotate(-15 18 102)"/>
+      <ellipse cx="68" cy="92"  rx="14" ry="9" fill="#E8B84B" transform="rotate(-15 68 92)"/>
+    </svg>
+    <svg class="absolute -bottom-10 -left-10 w-[220px] opacity-[0.04] dark:opacity-[0.06]" viewBox="0 0 220 260" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M180 10 C110 60, 40 150, 10 250 C70 180, 150 100, 180 10Z" fill="#C85A1A"/>
+      <path d="M180 10 C110 70, 50 170, 10 250" stroke="#C85A1A" stroke-width="2"/>
+    </svg>
+  </div>
+
+  <div class="max-w-6xl mx-auto px-6 relative z-10">
+
+    <!-- Section header -->
+    <div class="text-center mb-16">
+      <div class="flex items-center justify-center gap-3 mb-4">
+        <span class="block w-6 h-0.5 bg-brand-orange"></span>
+        <span class="text-xs font-semibold tracking-[0.15em] uppercase text-brand-orange">
+          {t('calipso.eyebrow')}
+        </span>
+        <span class="block w-6 h-0.5 bg-brand-orange"></span>
+      </div>
+      <h2 class="font-display font-bold text-4xl md:text-5xl text-warm-text dark:text-neutral-100 mb-5">
+        {t('calipso.title')}
+      </h2>
+      <p class="text-lg text-warm-muted dark:text-neutral-400 max-w-2xl mx-auto leading-relaxed">
+        {t('calipso.subtitle')}
+      </p>
+    </div>
+
+    <!-- Content: prose + book cover -->
+    <div class="grid grid-cols-1 lg:grid-cols-3 gap-12 items-start">
+
+      <!-- Prose -->
+      <div class="lg:col-span-2 space-y-5">
+        {paragraphs.map((p) => (
+          <p class="text-base text-warm-muted dark:text-neutral-400 leading-relaxed">
+            {lang === 'es' ? p.es : p.en}
+          </p>
+        ))}
+      </div>
+
+      <!-- Book cover -->
+      <div class="lg:col-span-1 lg:sticky lg:top-24">
+        <div class="bg-warm-card dark:bg-neutral-900 border border-warm-border dark:border-neutral-800 rounded-2xl overflow-hidden shadow-lg">
+          <img
+            src="/images/calypso-book-cover.jpg"
+            alt={lang === 'es'
+              ? 'Portada del libro El Calypso, ayer, hoy y mañana'
+              : 'Cover of the book The Calypso, Yesterday, Today and Tomorrow'}
+            class="w-full h-auto"
+            loading="lazy"
+          />
+          <p class="px-5 py-4 text-sm text-warm-muted dark:text-neutral-400 leading-relaxed text-center">
+            {t('calipso.book_caption')}
+          </p>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+</section>

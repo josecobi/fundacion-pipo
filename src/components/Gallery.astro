@@ -74,6 +74,7 @@ const lightbox = new Map(
       {items.map((item) => {
         const title = lang === 'es' ? item.data.title_es : item.data.title_en;
         const alt   = lang === 'es' ? item.data.alt_es   : item.data.alt_en;
+        const caption = lang === 'es' ? item.data.caption_es : item.data.caption_en;
         const isFeatured = item.data.featured;
 
         return (
@@ -86,6 +87,7 @@ const lightbox = new Map(
             data-src={lightbox.get(item.id)}
             data-title={title}
             data-alt={alt}
+            data-caption={caption}
           >
             <!-- Image -->
             <Picture
@@ -102,6 +104,9 @@ const lightbox = new Map(
             <div class="absolute inset-0 bg-linear-to-t from-black/70 via-black/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-5">
               <p class="text-white font-display font-bold text-lg leading-tight">
                 {title}
+              </p>
+              <p class="text-white/85 text-sm leading-snug mt-2 line-clamp-5">
+                {caption}
               </p>
               <div class="flex items-center gap-1.5 mt-2">
                 <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" opacity="0.7">
@@ -158,6 +163,7 @@ const lightbox = new Map(
         id="lightbox-title"
         class="text-white/80 text-sm font-medium text-center"
       ></p>
+      <p id="lightbox-caption" class="text-white/70 text-sm text-center max-w-2xl leading-relaxed"></p>
     </div>
   </div>
 
@@ -169,15 +175,17 @@ const lightbox = new Map(
   // Simple, readable, no dependencies.
   // =============================================
 
-  const lightbox      = document.getElementById('lightbox') as HTMLElement;
-  const lightboxImg   = document.getElementById('lightbox-img') as HTMLImageElement;
-  const lightboxTitle = document.getElementById('lightbox-title') as HTMLElement;
-  const closeBtn      = document.getElementById('lightbox-close') as HTMLButtonElement;
+  const lightbox       = document.getElementById('lightbox') as HTMLElement;
+  const lightboxImg    = document.getElementById('lightbox-img') as HTMLImageElement;
+  const lightboxTitle  = document.getElementById('lightbox-title') as HTMLElement;
+  const lightboxCaption = document.getElementById('lightbox-caption') as HTMLElement;
+  const closeBtn       = document.getElementById('lightbox-close') as HTMLButtonElement;
 
-  function openLightbox(src: string, title: string, alt: string) {
+  function openLightbox(src: string, title: string, alt: string, caption: string) {
     lightboxImg.src = src;
     lightboxImg.alt = alt;
     lightboxTitle.textContent = title;
+    lightboxCaption.textContent = caption;
     lightbox.classList.remove('hidden');
     lightbox.classList.add('flex');
     document.body.style.overflow = 'hidden';
@@ -193,10 +201,11 @@ const lightbox = new Map(
   // Wire up all gallery trigger cards
   document.querySelectorAll('[data-lightbox-trigger]').forEach((el) => {
     el.addEventListener('click', () => {
-      const src   = el.getAttribute('data-src')   ?? '';
-      const title = el.getAttribute('data-title') ?? '';
-      const alt   = el.getAttribute('data-alt')   ?? '';
-      openLightbox(src, title, alt);
+      const src     = el.getAttribute('data-src')     ?? '';
+      const title   = el.getAttribute('data-title')   ?? '';
+      const alt     = el.getAttribute('data-alt')     ?? '';
+      const caption = el.getAttribute('data-caption') ?? '';
+      openLightbox(src, title, alt, caption);
     });
   });
 

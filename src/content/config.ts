@@ -27,6 +27,8 @@ const gallery = defineCollection({
   schema: ({ image }) => z.object({
     title_es: z.string(),
     title_en: z.string(),
+    caption_es: z.string(),
+    caption_en: z.string(),
     image:    image(),      // relative path, e.g. "./evento-01.jpg"
     alt_es:   z.string(),
     alt_en:   z.string(),

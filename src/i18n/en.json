@@ -4,6 +4,7 @@
     "donate": "Donate",
     "events": "Events",
     "past_events": "History",
+    "calipso": "Calypso",
     "gallery": "Gallery",
     "contact": "Contact"
   },
@@ -63,6 +64,12 @@
   "historia": {
     "title": "Who was Pipo Navarro?",
     "subtitle": "Panamanian trumpeter, teacher, and composer (1921–1981)"
+  },
+  "calipso": {
+    "eyebrow": "Pipo Navarro Foundation · May 22, 2024",
+    "title": "Tribute to Calypso",
+    "subtitle": "Exhibition on the Law declaring October 17 of each year as the Day of Panamanian Calypso and Calypsonians",
+    "book_caption": "The Calypso, Yesterday, Today and Tomorrow — Gerardo Maloney Francis and Ian Isidore Smart"
   },
   "footer": {
     "tagline": "Preserving Panama's musical legacy.",

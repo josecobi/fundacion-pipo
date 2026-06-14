@@ -88,6 +88,13 @@ content:
       - name: title_en
         label: "Title (English)"
         type: string
+      - name: caption_es
+        label: "Description (Spanish)"
+        description: "Full caption shown on hover and in the lightbox"
+        type: text
+      - name: caption_en
+        label: "Description (English)"
+        type: text
       - name: image
         label: "Photo"
         description: "Required — every gallery entry needs a photo"

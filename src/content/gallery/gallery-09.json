@@ -1,0 +1,11 @@
+{
+  "title_es": "Banner oficial de la FPN",
+  "title_en": "Official FPN banner",
+  "caption_es": "El banner oficial de la FPN.",
+  "caption_en": "The official banner of the FPN.",
+  "alt_es": "Banner oficial de la Fundación Pipo Navarro.",
+  "alt_en": "Official banner of the Pipo Navarro Foundation.",
+  "image": "./image9.jpeg",
+  "featured": false,
+  "order": 9
+}
