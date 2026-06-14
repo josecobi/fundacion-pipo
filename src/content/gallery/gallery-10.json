@@ -3,9 +3,10 @@
   "title_en": "Promotional poster for Calypso Day",
   "caption_es": "Afiche publicado a través de medios sociales, promoviendo el Día del Calypso, evento con el que la FPN está comprometida.",
   "caption_en": "Poster published on social media promoting Calypso Day, an event the FPN is committed to.",
-  "alt_es": "Afiche promocional del Día del Calypso.",
+  "image": "image10.jpeg",
+  "alt_es": "Afiche promocional del Día del Calypso",
   "alt_en": "Promotional poster for Calypso Day.",
-  "image": "./image10.jpeg",
+  "date": "2026-06-14",
   "featured": false,
   "order": 10
 }
