@@ -1,3 +1,6 @@
+settings:
+  cache: true
+
 media:
   # Gallery photos live INSIDE src/content/gallery/, co-located with their
   # JSON entries, because the gallery schema uses Astro's image() helper.
