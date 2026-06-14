@@ -35,7 +35,7 @@ content:
     type: collection
     path: src/content/events
     format: json
-    filename: "{primary}.json"
+    filename: "{year}-{month}-{day}-{primary}.json"
     view:
       fields: [title_es, date, featured]
     fields:
@@ -83,7 +83,7 @@ content:
     type: collection
     path: src/content/gallery
     format: json
-    filename: "{primary}.json"
+    filename: "{year}-{month}-{day}-{primary}.json"
     view:
       fields: [title_es, image, order, featured]
     fields:
